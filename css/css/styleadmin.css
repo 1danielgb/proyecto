@@ -1,0 +1,265 @@
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: #888;
+    line-height: 30px;
+    text-align: center;
+}
+/*navegacion sombreado*/
+#navegacion a{
+  color: black;
+  /*font-size: 12px;*/
+}
+.nav-active{
+  background:#EEE8AA;
+  padding: 3px;
+  color: black;
+  border-radius: 5px;
+}
+.nav-active:hover{
+  color: black !important;
+}
+#navegacion a:hover{
+  color: red;
+}
+
+strong { font-weight: 500; }
+/*estilo para el texto de los cuadros del panel*/
+a, a:hover, a:focus {
+	color: black;
+	text-decoration: none;
+    -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
+}
+
+h1, h2 {
+	margin-top: 10px;
+	font-size: 38px;
+    font-weight: 100;
+    color: #555;
+    line-height: 50px;
+}
+
+h3 {
+	font-size: 22px;
+    font-weight: 300;
+    color: #555;
+    line-height: 30px;
+}
+
+
+
+
+
+
+/***** Top content *****/
+
+.inner-bg {
+    padding: 100px 0 170px 0;
+}
+
+.top-content .text {
+	color: #fff;
+}
+
+.top-content .text h1 { color: #fff; }
+
+.top-content .description {
+	margin: 20px 0 10px 0;
+}
+
+.top-content .description p { opacity: 0.8; }
+
+.top-content .description a {
+	color: #fff;
+}
+.top-content .description a:hover, 
+.top-content .description a:focus { border-bottom: 1px dotted #fff; }
+
+.form-box {
+	margin-top: 50px;
+}
+/*navegacion del usuario, son las ubicaciones */
+#navegacion{
+	margin-top:30px;
+
+}
+/*Margen para el banner de gobierno*/
+.navegacion1{
+  margin-top:50px;
+}
+
+.form-top {
+	overflow: hidden;
+	padding: 0 25px 15px 25px;
+	background: #fff;
+	-moz-border-radius: 4px 4px 0 0; -webkit-border-radius: 4px 4px 0 0; border-radius: 4px 4px 0 0;
+	text-align: left;
+}
+
+.form-top-left {
+	float: left;
+	width: 75%;
+	padding-top: 25px;
+}
+
+.form-top-left h3 { margin-top: 0; }
+
+.form-top-right {
+	float: left;
+	width: 25%;
+	padding-top: 5px;
+	font-size: 66px;
+	color: #ddd;
+	line-height: 100px;
+	text-align: right;
+}
+
+
+
+
+
+/***** Media queries *****/
+
+@media (min-width: 992px) and (max-width: 1199px) {}
+
+@media (min-width: 768px) and (max-width: 991px) {}
+
+@media (max-width: 767px) {
+	
+	.inner-bg { padding: 60px 0 110px 0; }
+
+}
+
+@media (max-width: 415px) {
+	
+	h1, h2 { font-size: 32px; }
+
+}
+
+/*Inicia el CSS de los cuadros*/
+*{
+  box-sizing: border-box;
+}
+.wrapper{
+  width: 60%;
+  margin: 0 auto;
+}
+.square1{
+  font-family: sans-serif;
+  color: red; 
+  padding: 1em;
+    float:left;
+    width: 220px;
+    height: 220px;
+    margin-right:3%;
+    background: white;
+    background-image: url("../img/interno2.png");
+}
+.square2{
+  font-family: sans-serif;
+  color: white;
+  padding: 4em;
+    float:left;
+    width: 220px;
+    height: 220px;
+    margin-right:3%;
+    background: white;
+     background-image: url("../img/citas2.png"); 
+}
+.square3{
+  font-family: sans-serif;
+  color: white;
+  padding: 4em;
+    float:left;
+    width: 220px;
+    height: 220px;
+    margin-right:3%;
+    background: white;
+   background-image: url("../img/psicologos2.png"); 
+}
+
+.square4{
+  font-family: sans-serif;
+  color: white;
+  padding: 4em;
+    float:left;
+    width: 220px;
+    height: 220px;
+    margin-right:3%;
+    margin-top: 6%;
+    background: white;
+   background-image: url("../img/consulta2.png"); 
+
+  /*font-family: sans-serif;
+  color: white;
+  padding: 1em;
+    float:left;
+    width: 220px;
+    height: 220px;
+    top: 65%;
+    position: absolute;
+    margin-right:3%;
+    background: deepskyblue;
+   background-image: url("../img/consulta2.png"); */
+}
+
+.square5{
+   font-family: sans-serif;
+  color: white;
+  padding: 4em;
+    float:left;
+    width: 220px;
+    height: 220px;
+    margin-right:3%;
+    margin-top: 6%;
+    background: white;
+   background-image: url("../img/expediente2.png"); 
+ /* font-family: sans-serif;
+  color: white;
+  padding: 1em;
+    float:left;
+    width: 220px;
+    height: 220px;
+    top: 65%;
+    position: absolute;
+    margin-right:3%;
+    left: 38%;
+    background: deepskyblue;
+   background-image: url("../img/expediente2.png"); */
+}
+.square6{
+ font-family: sans-serif;
+  color: white;
+  padding: 4em;
+    float:left;
+    width: 220px;
+    height: 220px;
+    margin-right:3%;
+    margin-top: 6%;
+    background: white;
+   background-image: url("../img/interno2.png"); 
+ /* font-family: sans-serif;
+  color: white;
+  padding: 1em;
+    float:left;
+    width: 220px;
+    height: 220px;
+    top: 65%;
+    position: absolute;
+    margin-right:3%;
+    left: 56%;
+    background: deepskyblue;
+   background-image: url("../img/interno2.png"); */
+}
+.square:last-child{
+  margin-right:0;
+}
+.square:before{
+    content:"";
+    display:block;
+    padding-top:100%;
+  float: left; 
+  /*Flotando el elemento podemos usar el cuadrado como cualquier otra capa y podremos meter contenido. Pero dejará de ser responsive cuando el contenido sea mayor que su alto*/
+}
