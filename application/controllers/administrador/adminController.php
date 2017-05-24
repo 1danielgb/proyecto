@@ -8,6 +8,10 @@ class adminController extends CI_Controller
         $this->load->view('admin/adminpanel');
     }
 
+    public function panelinterno(){
+    	$this->load->view('admin/adminpanelinterno');
+    }
+
     public function altauser(){
         
         $this->load->view('admin/adminaltauser');

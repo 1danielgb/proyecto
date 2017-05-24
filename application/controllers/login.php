@@ -20,11 +20,12 @@ class Login extends CI_Controller
 		$this->load->model('m_cereso');
 		//Mandando el email al metodo getUser del modelo
 		$fila = $this->m_cereso->getUser($usuario);
-		//echo ($fila);
+		//print_r($fila);
+		//die();
 		//echo $usuario . "" . $clave;
 		//validacion 
 		if($fila !=null){
-			if($fila->clave == $clave){
+			if($fila->contraseña == $clave){
 				//variable de sesion
 					$data = array('usuario' => $usuario,
 						 'id' =>$fila->idUsuario,
@@ -33,9 +34,10 @@ class Login extends CI_Controller
 					//creando la variable
 					$this->session->set_userdata($data);
 					//Comprodando que sea el administrador
-					if($fila->tipouser == 1){
+					if($fila->tipoUsuario == 1){
 						//return view('admin.adminpanel');
 						//return redirect('admin');
+						
 						$this->load->view('admin/adminpanel');
 						//return;
 					}else{
@@ -47,12 +49,15 @@ class Login extends CI_Controller
 			}else{
 				//si no se encotro el email vuelve a inicio
 				//echo "sali";
+				print_r("No entre");
+				die();
 				echo '<script type="text/javascript">alert("Datos incorrectos");</script>';
 				header("Location:" . base_url());
 			}
 		}else{
 				//si no encontro nada que lo mande a inicio
-			//echo "sali";
+				//echo "sali";
+
 				echo '<script type="text/javascript">alert("Datos incorrectos");</script>';
 				header("Location:" . base_url());
 			}

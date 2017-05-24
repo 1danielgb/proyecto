@@ -5,9 +5,12 @@
 
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
         <link rel="stylesheet" href="<?= base_url() ?>css/bootstrap/css/bootstrap.min.css">
+        <!-- <link rel="stylesheet" href="<?= base_url() ?>css/materialize.min.css"> -->
+        <!-- <link rel="stylesheet" href="<?= base_url() ?>css/materialize.css"> -->
         <link rel="stylesheet" href="<?= base_url() ?>css/font-awesome/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?= base_url() ?>css/css/form-elements.css">
         <link rel="stylesheet" href="<?= base_url() ?>css/css/styleadmin.css">
+		<link rel="stylesheet" href="<?= base_url() ?>css/justificado.css">
 		<link href="<?= base_url() ?>css/font-awesome.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css"  media="screen" href="<?=base_url() ?>css/bootstrap-datetimepicker.min.css">
 
@@ -31,9 +34,9 @@
 
 			<?php if($this->session->userdata('usuario') != null){ ?>
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Home</a></li>
-				<li><a href="#">Page 1</a></li>
-				<li><a href="#">Page 2</a></li>
+				<!-- <li class="active"><a href="#">Home</a></li> -->
+				<!-- <li><a href="#">Page 1</a></li> -->
+				<!-- <li><a href="#">Page 2</a></li> -->
 			</ul>
 			<?php } ?>
 

@@ -11,18 +11,18 @@
 				<!-- <a class="active" href="#!"> </a> -->
 			</div>
 	  		<div class="col-sm-6 col-sm-offset-3 form-box">
-				<form class="login-form" action="<?=base_url()?>" method="post" role="form">
+				<form class="login-form" action="<?=base_url()?>regint" method="post" role="form">
 					<div class="form-group">
 			            <label class="sr-only" for="form-name">Nombre</label>
-			            <input type="name" name="usuario" placeholder="Nombre..." class="form-email form-control" id="form-email">
+			            <input type="name" name="nombre" placeholder="Nombre..." class="form-email form-control" id="form-email">
 			        </div>
 			        <div class="form-group">
 			            <label class="sr-only" for="form-name">Apellidos</label>
-			            <input type="name" name="usuario" placeholder="Apellidos..." class="form-email form-control" id="form-email">
+			            <input type="name" name="apellido" placeholder="Apellidos..." class="form-email form-control" id="form-email">
 			        </div>
 			        <div class="form-group">
 			        	 <!-- <label class="sr-only" for="form-name">Estado civil</label> -->
-			            <select class="form-control" placeholder="Apellidos...">...
+			            <select class="form-control" name="civil">.
 			            	<option disabled selected hiddent> Estado civil</option>
 			            	<option>Casado</option>
 			            	<option>Soltero</option>
@@ -32,7 +32,7 @@
 			        </div>
 			        <div class="form-group">
 			        	 <!-- <label class="sr-only" for="form-name">Estado civil</label> -->
-			            <select class="form-control" placeholder="Sexo...">...
+			            <select class="form-control" name="sexo" placeholder="Sexo...">...
 			            	<option disabled selected hiddent> Sexo</option>
 			            	<option>Masculino</option>
 			            	<option>Femenino</option>
@@ -40,11 +40,11 @@
 			        </div>
 		            <div class="form-group">
 		                <label class="sr-only" for="form-name">Lugar de nacimiento</label>
-		                <input type="name" name="apellido" placeholder="apellido" class="form-email form-control" id="form-email">
+		                <input type="name" name="nacimiento" placeholder="Lugar de nacimiento" class="form-email form-control" id="form-email">
 		            </div>
 		             <div class="well">
 					  <div id="datetimepicker4" class="input-append">
-					    <input data-format="dd-MM-yyyy" type="text" placeholder="Fecha de nacimiento"></input>
+					    <input data-format="yyyy-MM-dd" type="text" name="fechaNa" placeholder="Fecha de nacimiento"></input>
 					    <span class="add-on">
 					      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
 					      </i>
@@ -52,16 +52,16 @@
 					  </div>
 					</div>
 		            <div class="form-group">
-		                <label class="sr-only" for="form-name">Lugar de nacimiento</label>
-		                <input type="email" name="correo" placeholder="Lugar de nacimiento" class="form-email form-control" id="form-email">
+		                <label class="sr-only" for="form-name">Domicilio</label>
+		                <input type="name" name="domicilio" placeholder="Domicilio" class="form-email form-control" id="form-email">
 		            </div>
 		            <div class="form-group">
-		                <label class="sr-only" for="form-name">Domicilio</label>
-		                <input type="name" name="Domicilio" placeholder="Domicilio" class="form-email form-control" id="form-email">
+		                <label class="sr-only" for="form-name">Ocupación</label>
+		                <input type="name" name="ocupacion" placeholder="Ocupación" class="form-email form-control" id="form-email">
 		            </div>
 		            <div class="form-group">
 			        	 <!-- <label class="sr-only" for="form-name">Estado civil</label> -->
-			            <select class="form-control" placeholder="Sexo...">...
+			            <select class="form-control" name="escolaridad">...
 			            	<option disabled selected hiddent> Escolaridad</option>
 			            	<option>Prescolar</option>
 			            	<option>Primaria</option>
@@ -73,7 +73,12 @@
 			            	<option>Doctorado</option>
 			            </select>
 			        </div>
-						<button type="submit" class="btn btn-primary">Aceptar</button>    
+			        <div class="form-group">
+		                <label class="sr-only" for="form-name">Descripcion</label>
+		                <!-- <input type="name" name="descripcion" placeholder="Descripción" class="form-email form-control" id="form-email"> -->
+		            	<textarea class="form-control" rows="3" name="descripcion" placeholder="Descripción"></textarea>
+		            </div>
+						<button type="submit" class="btn btn-primary" onclick="Materialize.toast('Registrado con exito !!', 3000, 'rounded');">Aceptar</button>    
 				</form>
 			</div>	
 	  	</div>

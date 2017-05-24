@@ -54,7 +54,22 @@ $route['panel'] = 'login/ingresar';
 $route['admin'] = 'administrador/adminController/index';
 $route['AltaPract'] ='administrador/adminController/altauser';
 $route['regpra'] ='administrador/adminController/registrar';
+//Ruta panel interno 
+$route['PanelInter']='administrador/adminController/panelinterno';
 //routes of the interno.
 $route['AltaIntern']='administrador/internoController/altainterno';
-$route['admin'] = 'administrador/adminController/index';
+$route['regint'] = 'administrador/internoController/registrar';
+//routes of the atender citas
+$route['AtenConsul'] = 'administrador/consulController/index';
+//routes for the format of personalidad 
+$route['EstuPerso'] = 'administrador/consulController/formpersonalidad';
+$route['EstuPerso2'] = 'administrador/consulController/formpersonalidadpost';
+
+$route['Pdf'] = 'administrador/pdfController/index';
+
+$route['EntrePsico'] = 'administrador/consulController/entrepsicologica';
+$route['EntrePsico2'] = 'administrador/consulController/entrevistapost';
+$route['PdfEntrevista']='administrador/pdfEntrevistaController/index';
+//routes of the archive historic
+$route['Archivo'] = 'administrador/archivoController/index';
 $route['translate_uri_dashes'] = FALSE;

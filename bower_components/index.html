@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap-theme.min.css">
+</head>
+<body>
+	<modal :show.sync="showCustomModal" effect="fade" width="400">
+  <div slot="modal-header" class="modal-header">
+    <h4 class="modal-title">
+      <i>Custom</i> <code>Modal</code> <b>Title</b>
+    </h4>
+  </div>
+  <div slot="modal-body" class="modal-body">...</div>
+  <div slot="modal-footer" class="modal-footer">
+    <button type="button" class="btn btn-default" @click="showCustomModal = false">Exit</button>
+    <button type="button" class="btn btn-success" @click="showCustomModal = false">Custom Save</button>
+  </div>
+</modal>
+	<script type="text/javascript" src="vue/dist/vue.min.js"></script>
+	<script type="text/javascript" src="vue-strap/dist/vue-strap.min.js"></script>
+
+<script type="text/javascript">
+// Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('#token').getAttribute('value');
+
+	new Vue({
+    components: {
+      vSelect: VueStrap.select
+    },
+    data: {
+      options: []
+    }
+  });
+</script>
+
+</body>
+
+
+</html>

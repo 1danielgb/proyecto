@@ -49,7 +49,9 @@ h3 {
 }
 
 
-
+.toas{
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
 
 
 
@@ -160,7 +162,7 @@ h3 {
 .square2{
   font-family: sans-serif;
   color: white;
-  padding: 4em;
+  padding: 1em;
     float:left;
     width: 220px;
     height: 220px;
@@ -171,7 +173,7 @@ h3 {
 .square3{
   font-family: sans-serif;
   color: white;
-  padding: 4em;
+  padding: 1em;
     float:left;
     width: 220px;
     height: 220px;
@@ -183,7 +185,7 @@ h3 {
 .square4{
   font-family: sans-serif;
   color: white;
-  padding: 4em;
+  padding: 1em;
     float:left;
     width: 220px;
     height: 220px;
@@ -207,8 +209,8 @@ h3 {
 
 .square5{
    font-family: sans-serif;
-  color: white;
-  padding: 4em;
+  color: black;
+  padding: 1em;
     float:left;
     width: 220px;
     height: 220px;
@@ -231,8 +233,177 @@ h3 {
 }
 .square6{
  font-family: sans-serif;
+  color: red;
+  padding: 1em;
+    float:left;
+    width: 220px;
+    height: 220px;
+    margin-right:3%;
+    margin-top: 6%;
+    background: white;
+   background-image: url("../img/interno2.png"); 
+ /* font-family: sans-serif;
   color: white;
-  padding: 4em;
+  padding: 1em;
+    float:left;
+    width: 220px;
+    height: 220px;
+    top: 65%;
+    position: absolute;
+    margin-right:3%;
+    left: 56%;
+    background: deepskyblue;
+   background-image: url("../img/interno2.png"); */
+}
+/*cuadros para los formatos*/
+.square7{
+ font-family: sans-serif;
+  color: red;
+  padding: 1em;
+    float:left;
+    width: 220px;
+    height: 220px;
+    margin-right:3%;
+    margin-top: 6%;
+    background: white;
+   /*background-image: url("../img/personalidad2.png"); */
+ /* font-family: sans-serif;
+  color: white;
+  padding: 1em;
+    float:left;
+    width: 220px;
+    height: 220px;
+    top: 65%;
+    position: absolute;
+    margin-right:3%;
+    left: 56%;
+    background: deepskyblue;
+   background-image: url("../img/interno2.png"); */
+}
+.square8{
+ font-family: sans-serif;
+  color: red;
+  padding: 1em;
+    float:left;
+    width: 220px;
+    height: 220px;
+    margin-right:3%;
+    margin-top: 6%;
+    background: white;
+   /*background-image: url("../img/interno2.png"); */
+ /* font-family: sans-serif;
+  color: white;
+  padding: 1em;
+    float:left;
+    width: 220px;
+    height: 220px;
+    top: 65%;
+    position: absolute;
+    margin-right:3%;
+    left: 56%;
+    background: deepskyblue;
+   background-image: url("../img/interno2.png"); */
+}
+.square9{
+ font-family: sans-serif;
+  color: red;
+  padding: 1em;
+    float:left;
+    width: 220px;
+    height: 220px;
+    margin-right:3%;
+    margin-top: 6%;
+    background: white;
+   background-image: url("../img/interno2.png"); 
+ /* font-family: sans-serif;
+  color: white;
+  padding: 1em;
+    float:left;
+    width: 220px;
+    height: 220px;
+    top: 65%;
+    position: absolute;
+    margin-right:3%;
+    left: 56%;
+    background: deepskyblue;
+   background-image: url("../img/interno2.png"); */
+}
+.square9{
+ font-family: sans-serif;
+  color: red;
+  padding: 1em;
+    float:left;
+    width: 220px;
+    height: 220px;
+    margin-right:3%;
+    margin-top: 6%;
+    background: white;
+   background-image: url("../img/interno2.png"); 
+ /* font-family: sans-serif;
+  color: white;
+  padding: 1em;
+    float:left;
+    width: 220px;
+    height: 220px;
+    top: 65%;
+    position: absolute;
+    margin-right:3%;
+    left: 56%;
+    background: deepskyblue;
+   background-image: url("../img/interno2.png"); */
+}
+.square10{
+ font-family: sans-serif;
+  color: red;
+  padding: 1em;
+    float:left;
+    width: 220px;
+    height: 220px;
+    margin-right:3%;
+    margin-top: 6%;
+    background: white;
+   background-image: url("../img/interno2.png"); 
+ /* font-family: sans-serif;
+  color: white;
+  padding: 1em;
+    float:left;
+    width: 220px;
+    height: 220px;
+    top: 65%;
+    position: absolute;
+    margin-right:3%;
+    left: 56%;
+    background: deepskyblue;
+   background-image: url("../img/interno2.png"); */
+}
+.square11{
+ font-family: sans-serif;
+  color: red;
+  padding: 1em;
+    float:left;
+    width: 220px;
+    height: 220px;
+    margin-right:3%;
+    margin-top: 6%;
+    background: white;
+   background-image: url("../img/interno2.png"); 
+ /* font-family: sans-serif;
+  color: white;
+  padding: 1em;
+    float:left;
+    width: 220px;
+    height: 220px;
+    top: 65%;
+    position: absolute;
+    margin-right:3%;
+    left: 56%;
+    background: deepskyblue;
+   background-image: url("../img/interno2.png"); */
+}
+.square12{
+ font-family: sans-serif;
+  color: red;
+  padding: 1em;
     float:left;
     width: 220px;
     height: 220px;
