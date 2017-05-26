@@ -702,7 +702,13 @@ class pdfEntrevistaController extends CI_Controller {
      * D = Envia el pdf para descarga
      *
      */
-     $this->pdf->Output("Estudio_Inicial_de_personalidad_de_" . $entrevista->nombreint . ".pdf", 'I');
+      $nombrepdf=utf8_decode($entrevista->nombreint);
+
+      $carpeta = 'C:/xampp/htdocs/cereso/Formatos/entrevistapsicologica/';
+      $this->pdf->Output($carpeta.$nombrepdf.'.pdf','F');
+      $this->pdf->Output("Estudio_Inicial_de_personalidad_de_" . $nombrepdf . ".pdf", 'I');
+
+     //$this->pdf->Output("Estudio_Inicial_de_personalidad_de_" . $entrevista->nombreint . ".pdf", 'I');
      ob_end_flush();
     }
   }

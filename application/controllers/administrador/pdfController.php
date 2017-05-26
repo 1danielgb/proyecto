@@ -255,7 +255,13 @@ class pdfController extends CI_Controller {
      * D = Envia el pdf para descarga
      *
      */
-     $this->pdf->Output("Estudio_Inicial_de_personalidad_de_" . $persona->nombre . " " . $persona->apellido . ".pdf", 'I');
+    $nombrepdf=utf8_decode($persona->nombre . " " . $persona->apellido);
+
+    $carpeta = 'C:/xampp/htdocs/cereso/Formatos/estudioinicialdepersonalidad/';
+    $this->pdf->Output($carpeta.$nombrepdf.'.pdf','F');
+     $this->pdf->Output("Estudio_Inicial_de_personalidad_de_" . $nombrepdf . ".pdf", 'I');
+     //$this->pdf->Output("Estudio_Inicial_de_personalidad_de_" . $persona->nombre . " " . $persona->apellido . ".pdf", 'I');
+     
      ob_end_flush();
     }
   }

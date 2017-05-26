@@ -64,12 +64,27 @@ $route['AtenConsul'] = 'administrador/consulController/index';
 //routes for the format of personalidad 
 $route['EstuPerso'] = 'administrador/consulController/formpersonalidad';
 $route['EstuPerso2'] = 'administrador/consulController/formpersonalidadpost';
-
 $route['Pdf'] = 'administrador/pdfController/index';
-
+//routes for the format of entrevista
 $route['EntrePsico'] = 'administrador/consulController/entrepsicologica';
 $route['EntrePsico2'] = 'administrador/consulController/entrevistapost';
 $route['PdfEntrevista']='administrador/pdfEntrevistaController/index';
+//routes for the format of estudio psicologico
+$route['EstuPsico']= 'administrador/consulController/estupsicologico';
+$route['EstuPsico2'] = 'administrador/consulController/estupsicolpost';
+$route['PdfEstuPsi']='administrador/pdfEstudiPsicoController/index';
+//routes for the format of estudio para beneficio 
+$route['EstuBenefi']='administrador/consulController/esbeneficio';
+$route['EstuBenefi2'] = 'administrador/consulController/estubenefipost';
+$route['PdfEstuBenefi']='administrador/pdfEstBenefiController/index';
+//route for the format activity 
+$route['FormActivi']='administrador/consulController/formactivity';
+$route['FormActivi2'] = 'administrador/consulController/formactivitypost';
+$route['PdfFormAct']='administrador/pdfFormActController/index';
+//$route for the format of estudio clinico criminológico 
+$route['EstuClini']= 'administrador/consulController/estuclinico';
+$route['EstuClini2'] = 'administrador/consulController/estuclinipost';
+$route['PdfEstuClini']='administrador/pdfEstCliniController/index';
 //routes of the archive historic
 $route['Archivo'] = 'administrador/archivoController/index';
 $route['translate_uri_dashes'] = FALSE;

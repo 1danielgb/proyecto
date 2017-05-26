@@ -7,17 +7,21 @@ class consulController extends CI_Controller
        // return view('administrador.panel');
         //	Nombre del interno 
         $nombre=$this->input->post('nombre');
-        
+        // Apellidos del interno
+        $apellido=$this->input->post('apellido');
         //cargando el modelo de internos para hacer la busqueda 
         $this->load->model("m_interno");
         //mandando el nombre al modelo
-        $fila = $this->m_interno->getnominterno($nombre);
+        $fila = $this->m_interno->getnominterno($nombre,$apellido);
         //comprobamos que el nombre exista
         if($fila==null){
 			header("Location:" . base_url() . "admin");
 		} else {
+            $ape= $fila->apellido;
 			$nom2 =$fila->nombre;
+            $datos=array();
 			$datos['nombre'] = $nom2;
+            $datos['apellido']=$ape;
 			//echo $nom2;
 			$var['dato'] = array();
 			$var['dato'] = $nom2; 
@@ -48,9 +52,14 @@ class consulController extends CI_Controller
     public function formpersonalidad(){
         //obteniendo el nombre del interno del input invisible de la vista anterior
         $nombre=$this->input->post('nombre');
+        $apellido=$this->input->post('apellido');
+
+        //echo $nombre;
+        //echo $apellido;
+        //die();
         $this->load->model("m_interno");
         //mandando el nombre al modelo
-        $fila = $this->m_interno->getnominterno($nombre);
+        $fila = $this->m_interno->getnominterno($nombre,$apellido);
         $datos= array();
         $datos['info']=$fila;
         //cargando la vista.
@@ -93,10 +102,11 @@ class consulController extends CI_Controller
     public function entrepsicologica(){
     	//obteniendo el nombre del interno del input invisible de la vista anterior
     	$nombre=$this->input->post('nombre');
+        $apellido=$this->input->post('apellido');
     	//cargando el modelo de internos para hacer la busqueda 
         $this->load->model("m_interno");
         //mandando el nombre al modelo
-        $fila = $this->m_interno->getnominterno($nombre);
+        $fila = $this->m_interno->getnominterno($nombre,$apellido);
         $datos= array();
         $datos['info']=$fila;
         //$nom2 =$fila->nombre;
@@ -235,6 +245,217 @@ class consulController extends CI_Controller
             }
 
      }
+
+    public function estupsicologico(){
+        //obteniendo el nombre del interno del input invisible de la vista anterior
+        $nombre=$this->input->post('nombre');
+        //apellido del interno
+        $apellido=$this->input->post('apellido');
+        //cargando el modelo de internos para hacer la busqueda
+        //echo $nombre;
+        //echo $apellido;
+        //die(); 
+        $this->load->model("m_interno");
+        //mandando el nombre al modelo
+        $fila = $this->m_interno->getnominterno($nombre,$apellido);
+        $datos= array();
+        $datos['info']=$fila;
+        //print_r($datos);
+        //die();
+        //$nom2 =$fila->nombre;
+
+        //$nombre=['nombre']->$fila;
+        //$datos['nombre']=$fila;
+        //$datos['fechan']=$fechan;
+        //cargando la vista.
+        $this->load->view('admin/adminformestupsicolo', $datos);
+    }
+    public function estupsicolpost(){
+        //obteniendo los datos;
+        $fecha= $this->input->post('fecha');
+        $nombre = $this->input->post('nombre');
+        $apellido =$this->input->post('apellido');
+        $procePenal=$this->input->post('procePenal');
+        $descripcion=$this->input->post('descripcion');
+        $antecentes= $this->input->post('antece');
+        $examen= $this->input->post('examen');
+        $indiceLe= $this->input->post('indiceLe');
+        $nivelInt= $this->input->post('nivelInt');
+        $dinamicaPer= $this->input->post('dinamicaPer');
+        $factPsico=$this->input->post('factPsico');
+        $impresionDiag= $this->input->post('impresionDiag');
+        $conclusion=$this->input->post('conclusion');
+        //Variables del Estambul
+        $vertur=$this->input->post('vertur');
+        $reexpertor=$this->input->post('reexpertor');
+        $inviemo=$this->input->post('inviemo');
+        $hiperex=$this->input->post('hiperex');
+        $sintdepre=$this->input->post('sintdepre');
+        $disaut=$this->input->post('disaut');
+        $disodesp=$this->input->post('disodesp');
+        $quejaspsi=$this->input->post('quejaspsi');
+        $psicosis=$this->input->post('psicosis');
+        $deteneupsi=$this->input->post('deteneupsi');
+        $diagnostico=$this->input->post('diagnostico');
+
+        // $vertur,$reexpertor,$inviemo,$hiperex,$sintdepre,$disaut,$disodesp,$quejaspsi,$psicosis,$deteneupsi,$diagnostico
+        //echo $antecentes;
+        //die();
+        //cargando el modelo
+        $this->load->model('m_formato');
+        //mandando los datos al modelo
+        $fila = $this->m_formato->postestupsicol($fecha,$nombre,$apellido,$procePenal,$antecentes,$descripcion,$examen,$nivelInt,$indiceLe,$dinamicaPer,$factPsico,$impresionDiag,$conclusion,
+                $vertur,$reexpertor,$inviemo,$hiperex,$sintdepre,$disaut,$disodesp,$quejaspsi,$psicosis,$deteneupsi,$diagnostico);
+        //$nom2 =$fila->descripEstuPsic;
+        
+        
+        //header("Location:" . base_url() . "PdfEstuPsi");
+         
+        if($fila!=false){
+                //echo "Datos almacenados";
+                header("Location:" . base_url() . "PdfEstuPsi");
+                //header("Location:" . base_url() . "EntrePsico");
+        }else{
+                echo "no puedes dar de alta";
+            }
+
+    }
+    public function esbeneficio(){
+        //obteniendo el nombre del interno del input invisible de la vista anterior
+        $nombre=$this->input->post('nombre');
+        //apellido del interno
+        $apellido=$this->input->post('apellido');
+        //cargando el modelo de internos para hacer la busqueda
+        //echo $nombre;
+        //echo $apellido;
+        //die(); 
+        $this->load->model("m_interno");
+        //mandando el nombre al modelo
+        $fila = $this->m_interno->getnominterno($nombre,$apellido);
+        $datos= array();
+        $datos['info']=$fila;
+        //print_r($datos);
+        //die();
+        //$nom2 =$fila->nombre;
+
+        //$nombre=['nombre']->$fila;
+        //$datos['nombre']=$fila;
+        //$datos['fechan']=$fechan;
+        //cargando la vista.
+        $this->load->view('admin/adminformestubenefi', $datos);   
+    }
+    public function estubenefipost(){
+        $fecha= $this->input->post('fecha');
+        $nombre = $this->input->post('nombre');
+        $sobrenom= $this->input->post('sobrenom');
+        $edad= $this->input->post('edad');
+        $delito= $this->input->post('delito');
+        $indiceLes= $this->input->post('indiceLes');
+        $actitudTom= $this->input->post('actitudTom');
+        $examMen= $this->input->post('examMen');
+        $prueApli= $this->input->post('prueApli');
+        $nivelInt= $this->input->post('nivelInt');
+        $indiceLes= $this->input->post('indiceLes');
+        $dinaPerso= $this->input->post('dinaPerso');
+        $impreDiag= $this->input->post('impreDiag');
+        $resulTrata= $this->input->post('resulTrata');
+        $menFactPsico= $this->input->post('menFactPsico');
+        $requerimientos= $this->input->post('requerimientos');
+        $especifique= $this->input->post('especifique');
+        $sugerencia= $this->input->post('sugerencia');
+
+
+         //$fecha,$nombre,$sobrenom,$edad,$delito,$indiceLes,$actitudTom,$examMen,$prueApli,$nivelInt,$indiceLes,$dinaPerso,$impreDiag,$resulTrata,$menFactPsico,$requerimientos,$especifique,$sugerencia
+
+         //cargando el modelo
+        $this->load->model('m_formato');
+        //mandando los datos al modelo
+        $fila = $this->m_formato->postestubenefi($fecha,$nombre,$sobrenom,$edad,$delito,$actitudTom,$examMen,$prueApli,
+                                                 $nivelInt,$indiceLes,$dinaPerso,$impreDiag,$resulTrata,$menFactPsico,$requerimientos,$especifique,$sugerencia);
+        //$nom2 =$fila->descripEstuPsic;
+
+        if($fila!=false){
+                //echo "Datos almacenados";
+                header("Location:" . base_url() . "PdfEstuBenefi");
+                //header("Location:" . base_url() . "EntrePsico");
+        }else{
+                echo "no puedes dar de alta";
+            }
+        
+    }
+
+    public function formactivity(){
+        //obteniendo el nombre del interno del input invisible de la vista anterior
+        $nombre=$this->input->post('nombre');
+        //apellido del interno
+        $apellido=$this->input->post('apellido');
+        //cargando el modelo de internos para hacer la busqueda
+        //echo $nombre;
+        //echo $apellido;
+        //die(); 
+        $this->load->model("m_interno");
+        //mandando el nombre al modelo
+        $fila = $this->m_interno->getnominterno($nombre,$apellido);
+        $datos= array();
+        $datos['info']=$fila;
+        //print_r($datos);
+        //die();
+        //$nom2 =$fila->nombre;
+
+        //$nombre=['nombre']->$fila;
+        //$datos['nombre']=$fila;
+        //$datos['fechan']=$fechan;
+        //cargando la vista.
+        $this->load->view('admin/adminformactivity', $datos);
+    }
+
+    public function formactivitypost(){
+        $fecha= $this->input->post('fecha');
+        $nombre=$this->input->post('nombre');
+        $trataPsico= $this->input->post('trataPsico');
+        $psicoIndi= $this->input->post('psicoIndi');
+        $psicoGrup= $this->input->post('psicoGrup');
+        $teraFami= $this->input->post('teraFami');
+        $progInsti= $this->input->post('progInsti');
+         //cargando el modelo
+        $this->load->model('m_formato');
+        //mandando los datos al modelo
+        $fila = $this->m_formato->postformactivity($fecha,$nombre,$trataPsico,$psicoIndi,$psicoGrup,$teraFami,$progInsti);
+        //$nom2 =$fila->descripEstuPsic;
+
+        if($fila!=false){
+                //echo "Datos almacenados";
+                header("Location:" . base_url() . "PdfFormAct");
+                //header("Location:" . base_url() . "EntrePsico");
+        }else{
+                echo "no puedes dar de alta";
+            }
+    }
+
+    public function estuclinico(){
+        //obteniendo el nombre del interno del input invisible de la vista anterior
+        $nombre=$this->input->post('nombre');
+        //apellido del interno
+        $apellido=$this->input->post('apellido');
+        //cargando el modelo de internos para hacer la busqueda
+        //echo $nombre;
+        //echo $apellido;
+        //die(); 
+        $this->load->model("m_interno");
+        //mandando el nombre al modelo
+        $fila = $this->m_interno->getnominterno($nombre,$apellido);
+        $datos= array();
+        $datos['info']=$fila;
+        //print_r($datos);
+        //die();
+        //$nom2 =$fila->nombre;
+
+        //$nombre=['nombre']->$fila;
+        //$datos['nombre']=$fila;
+        //$datos['fechan']=$fechan;
+        //cargando la vista.
+        $this->load->view('admin/adminformestuclinico', $datos);
+    }
 
     public function registrar(){
 	    	if ($this->session->userdata('id')==1){

@@ -7,6 +7,16 @@ body {
     line-height: 30px;
     text-align: center;
 }
+ p{
+  text-align:left;
+  color: black;
+  font-weight: 20;
+  font-weight: bold;
+}
+textarea {
+  white-space: normal;
+  text-align: justify;
+}
 /*navegacion sombreado*/
 #navegacion a{
   color: black;
@@ -314,31 +324,7 @@ h3 {
     margin-right:3%;
     margin-top: 6%;
     background: white;
-   background-image: url("../img/interno2.png"); 
- /* font-family: sans-serif;
-  color: white;
-  padding: 1em;
-    float:left;
-    width: 220px;
-    height: 220px;
-    top: 65%;
-    position: absolute;
-    margin-right:3%;
-    left: 56%;
-    background: deepskyblue;
-   background-image: url("../img/interno2.png"); */
-}
-.square9{
- font-family: sans-serif;
-  color: red;
-  padding: 1em;
-    float:left;
-    width: 220px;
-    height: 220px;
-    margin-right:3%;
-    margin-top: 6%;
-    background: white;
-   background-image: url("../img/interno2.png"); 
+   /*background-image: url("../img/interno2.png"); */
  /* font-family: sans-serif;
   color: white;
   padding: 1em;
@@ -362,7 +348,7 @@ h3 {
     margin-right:3%;
     margin-top: 6%;
     background: white;
-   background-image: url("../img/interno2.png"); 
+   /*background-image: url("../img/interno2.png"); */
  /* font-family: sans-serif;
   color: white;
   padding: 1em;
@@ -386,7 +372,7 @@ h3 {
     margin-right:3%;
     margin-top: 6%;
     background: white;
-   background-image: url("../img/interno2.png"); 
+   /*background-image: url("../img/interno2.png"); */
  /* font-family: sans-serif;
   color: white;
   padding: 1em;
@@ -410,7 +396,7 @@ h3 {
     margin-right:3%;
     margin-top: 6%;
     background: white;
-   background-image: url("../img/interno2.png"); 
+   /*background-image: url("../img/interno2.png"); */
  /* font-family: sans-serif;
   color: white;
   padding: 1em;

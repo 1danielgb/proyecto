@@ -1,8 +1,9 @@
-
 <?php $this->load->view('admin/admincabecera.php');?>
+
 	<div class="navegacion1">
-		<h1><b><span style="color:orange">Estudio de personalidad de <?php echo $info->nombre ?></b></h1>	
+		<h1><b><span style="color:orange">Estudio clínico criminológico de <?php echo $info->nombre ." ". $info->apellido?></b></h1>	
 	</div>
+
 	<div class="container">
 	  	<div class="row">
 		  	<form id="nombre" action="<?=base_url()?>AtenConsul" method="POST">
@@ -15,14 +16,14 @@
 						<a href="#" onclick="$('#nombre').submit()">Formatos </a> 
 					
 					<span> | </span>
-					<a class="nav-active">Estudio de personalidad </a>
+					<a class="nav-active">Estudio Clinico Criminologico </a>
 					<!-- <a class="active" href="#!"> </a> -->
 				</div>
 			</form>
 	  		<div class="col-sm-6 col-sm-offset-3 form-box">
 				<form class="login-form" action="<?=base_url()?>EstuPerso2" method="post" role="form">
 					<div class="form-group">
-			            <p>Fecha</p>
+			            <label class="sr-only" for="form-name">Fecha</label>
 			            <input type="name" name="fecha" placeholder="Nombre..." class="form-email form-control" id="form-email"  value="<?php setlocale(LC_ALL,"es_ES"); 
 			            	$mes = date("F");
 			            	//$arrayName = array('' => , );
@@ -38,39 +39,39 @@
 			            	echo date("d") . " de " . $mesdef . " del " . date("Y"); ?>">
 			        </div>
 					<div class="form-group">
-			            <p>Nombre</p>
+			            <label class="sr-only" for="form-name">Nombre</label>
 			            <input type="name" name="nombre" placeholder="Nombre..." class="form-email form-control" id="form-email"  value="<?php echo $info->nombre; ?>">
 			        </div>
 			        <div class="form-group">
-			            <p>Apellido</p>
+			            <label class="sr-only" for="form-name">Apellido</label>
 			            <input type="name" name="apellido" placeholder="Apellido..." class="form-email form-control" id="form-email"  value="<?php echo $info->apellido; ?>">
 			        </div>
 			        <div class="form-group">
-			            <p>Antecedentes Familiares y personales</p>
+			            <label class="sr-only" for="form-name">Antecedentes Familiares y personales</label>
 			            <input type="name" name="antece" placeholder="Antecedentes familiares y personales" class="form-email form-control" id="form-email">
 			        </div>
 			        <div class="form-group">
-		                <p>Examen mental</p>
+		                <label class="sr-only" for="form-name">Examen mental</label>
 		                <!-- <input type="name" name="descripcion" placeholder="Descripción" class="form-email form-control" id="form-email"> -->
 		            	<textarea class="form-email form-control" rows="3" name="examen" placeholder="Examen mental"></textarea>
 		            </div>
 		            <div class="form-group">
-		                <p>Indice de lessiones organica</p>
+		                <label class="sr-only" for="form-name">Indice de lessiones organica</label>
 		                <!-- <input type="name" name="descripcion" placeholder="Descripción" class="form-email form-control" id="form-email"> -->
 		            	<textarea class="form-email form-control" rows="3" name="indiceLe" placeholder="Indice de lesiones organica nivel intelectual"></textarea>
 		            </div>
 		             <div class="form-group">
-		                <p>Nivel intelectual<p>
+		                <label class="sr-only" for="form-name">Nivel intelectual</label>
 		                <!-- <input type="name" name="descripcion" placeholder="Descripción" class="form-email form-control" id="form-email"> -->
 		            	<textarea class="form-email form-control" rows="3" name="nivelInt" placeholder="Nivel intelectual"></textarea>
 		            </div>
 		            <div class="form-group">
-		                <p>Dinamica de personalidad</p>
+		                <label class="sr-only" for="form-name">Dinamica de personalidad</label>
 		                <!-- <input type="name" name="descripcion" placeholder="Descripción" class="form-email form-control" id="form-email"> -->
 		            	<textarea class="form-email form-control" rows="3" name="dinamicaPer" placeholder="Dinamica de personalidad"></textarea>
 		            </div>
 		            <div class="form-group">
-		                <p>imprension diagnostica</p>
+		                <label class="sr-only" for="form-name">imprension diagnostica</label>
 		                <!-- <input type="name" name="descripcion" placeholder="Descripción" class="form-email form-control" id="form-email"> -->
 		            	<textarea class="form-email form-control" rows="3" name="impresionDiag" placeholder="Impresion diagnostica"></textarea>
 		            </div>
@@ -78,13 +79,6 @@
 				</form>
 			</div>	
 	  	</div>
-	</div> 	
-<?php $this->load->view('admin/adminpie.php');?>
+	</div> 	        		
 
-<script type="text/javascript">
-  $(function() {
-    $('#datetimepicker4').datetimepicker({
-      pickTime: false
-    });
-  });
-</script>
+<?php $this->load->view('admin/adminpie.php');?>

@@ -34,8 +34,8 @@ class m_interno extends CI_Model
 			return false;
 		}
 	}
-	public function getnominterno($nom){
-		$result=$this->db->query("SELECT *FROM interno WHERE nombre='$nom'");
+	public function getnominterno($nom,$ape){
+		$result=$this->db->query("SELECT *FROM interno WHERE nombre='$nom' AND apellido='$ape'");
 		return $result->row();
 
 		//$consulta=$this->db->select("nombre")->from('interno') ->where("nombre LIKE '%$nom%'")->get();

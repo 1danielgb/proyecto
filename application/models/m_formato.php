@@ -103,6 +103,88 @@ class m_formato extends CI_Model
 
 	}
 
+	public function postestupsicol($fecha,$nombre,$apellido,$procePenal,$antecentes,$descripcion,$examen,$nivelInt,$indiceLe,$dinamicaPer,$factPsico,$impresionDiag,$conclusion,
+        						   $vertur,$reexpertor,$inviemo,$hiperex,$sintdepre,$disaut,$disodesp,$quejaspsi,$psicosis,$deteneupsi,$diagnostico){
+			$nomfor= "estudio psicológico de " . $nombre;
+			//echo $nivelInt;
+			//die();
+			//obtines el id de la secion
+			$id=$this->session->userdata('id');
+			//consulta para llenar la tabla de formato
+			$result1 = $this->db->query("SELECT idUsuario from psicologa JOIN usuario on usuario_idUsuario=idUsuario WHERE idpsicologa='$id'");
+			$result2 =$result1->row();			
+			$nom2 =$result2->idUsuario;
+			/*print_r($nom2);
+			//return $result1->result_array();
+			return $result1->row();
+			// print_r($result1);
+			// die();*/
+			$SQL1 = "INSERT INTO formato(idformato,nombre,fecha,nota_idreporte,psicologa_idpsicologa,psicologa_usuario_idUsuario,practicante_idpracticante,practicante_usuario_idUsuario) VALUES (null,'$nomfor','$fecha','0','$id','$nom2',null,null);";
+			$this->db->query($SQL1);
+			// 
+
+			$ultimoId = $this->db->insert_id();																												
+			$SQL2 = "INSERT INTO estupsicologico(idestupsicologico,fecha,nombreInter,apellidoInter,procesoPen,anteceFamyPers,descripEstuPsic,examenMent,nivelIntel,indiceLesOrga,dinamicaPerson,factoresPsicoComDeli,impresionDiag,conclusion,formato_idformato,
+        						 vertur,reexpertor,inviemo,hiperex,sintdepre,disaut,disodesp,quejaspsi,psicosis,deteneupsi,diagnostico) 
+					VALUES (null,'$fecha','$nombre','$apellido','$procePenal','$antecentes','$descripcion','$examen','$nivelInt','$indiceLe','$dinamicaPer','$factPsico','$impresionDiag','$conclusion','$ultimoId',
+        						  '$vertur','$reexpertor','$inviemo','$hiperex','$sintdepre','$disaut','$disodesp','$quejaspsi','$psicosis','$deteneupsi','$diagnostico');";
+			$this->db->query($SQL2);
+			return true;
+	}
+
+	public function postestubenefi($fecha,$nombre,$sobrenom,$edad,$delito,$actitudTom,$examMen,$prueApli,$nivelInt,$indiceLes,$dinaPerso,$impreDiag,$resulTrata,$menFactPsico,$requerimientos,$especifique,$sugerencia){
+			$nomfor= "estudio para beneficio de " . $nombre;
+			//echo $nivelInt;
+			//die();
+			//obtines el id de la secion
+			$id=$this->session->userdata('id');
+			//consulta para llenar la tabla de formato
+			$result1 = $this->db->query("SELECT idUsuario from psicologa JOIN usuario on usuario_idUsuario=idUsuario WHERE idpsicologa='$id'");
+			$result2 =$result1->row();			
+			$nom2 =$result2->idUsuario;
+			/*print_r($nom2);
+			//return $result1->result_array();
+			return $result1->row();
+			// print_r($result1);
+			// die();*/
+			$SQL1 = "INSERT INTO formato(idformato,nombre,fecha,nota_idreporte,psicologa_idpsicologa,psicologa_usuario_idUsuario,practicante_idpracticante,practicante_usuario_idUsuario) VALUES (null,'$nomfor','$fecha','0','$id','$nom2',null,null);";
+			$this->db->query($SQL1);
+			// 
+
+			$ultimoId = $this->db->insert_id();																												
+			$SQL2 = "INSERT INTO estudiobeneficio(idestudiobeneficio,fecha,nombre,sobrenombre,edad,delito,actitudEntrev,examenMen,pruebasApli,nivelInte,indiceLesOrga,dinamicaPerso,impresionDiagn,resultadoTrata,factoresPsicoComiDeli,
+        						 requerimientosTrata,especificacion,sugerencia,formato_idformato) 
+					VALUES (null,'$fecha','$nombre','$sobrenom','$edad','$delito','$actitudTom','$examMen','$prueApli','$nivelInt','$indiceLes','$dinaPerso','$impreDiag','$resulTrata','$menFactPsico','$requerimientos','$especifique','$sugerencia','$ultimoId');";
+			$this->db->query($SQL2);
+			return true;
+	}
+
+	public function postformactivity($fecha,$nombre,$trataPsico,$psicoIndi,$psicoGrup,$teraFami,$progInsti){
+			$nomfor= "estudio de actividades de " . $nombre;
+			//echo $nivelInt;
+			//die();
+			//obtines el id de la secion
+			$id=$this->session->userdata('id');
+			//consulta para llenar la tabla de formato
+			$result1 = $this->db->query("SELECT idUsuario from psicologa JOIN usuario on usuario_idUsuario=idUsuario WHERE idpsicologa='$id'");
+			$result2 =$result1->row();			
+			$nom2 =$result2->idUsuario;
+			/*print_r($nom2);
+			//return $result1->result_array();
+			return $result1->row();
+			// print_r($result1);
+			// die();*/
+			$SQL1 = "INSERT INTO formato(idformato,nombre,fecha,nota_idreporte,psicologa_idpsicologa,psicologa_usuario_idUsuario,practicante_idpracticante,practicante_usuario_idUsuario) VALUES (null,'$nomfor','$fecha','0','$id','$nom2',null,null);";
+			$this->db->query($SQL1);
+			// 
+
+			$ultimoId = $this->db->insert_id();																												
+			$SQL2 = "INSERT INTO actividades(idactividades,fecha,nombre,tratPsico,psicIndiv,psicoGrup,terapiaFami,progInstiExter,formato_idformato) 
+					VALUES (null,'$fecha','$nombre','$trataPsico','$psicoIndi','$psicoGrup','$teraFami','$progInsti','$ultimoId');";
+			$this->db->query($SQL2);
+			return true;
+	}
+
 	public function registrarpract($usu = '',$cla= '',$tip = '',$cor='',$tel='',$ape=''){
 		//comprobando la optencion de datos
 		if(($usu && $cla && $tip) !=null){

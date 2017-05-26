@@ -22,7 +22,9 @@
 			
 				<section slot="modal-body" class="modal-body">
 					<h1>Ingresa el nombre del interno</h1>
-					<input  id="nombre" name="nombre"v-model="nombre" type="text" class="form-control" placeholder="Nombre" aria-describedby="basic-addon1">
+					<input  id="nombre" name="nombre" v-model="nombre" type="text" class="form-control" placeholder="Nombre" aria-describedby="basic-addon1">
+					<input  id="apellido" name="apellido"v-model="apellido" type="text" class="form-control" placeholder="Apellidos" aria-describedby="basic-addon1">
+
 				</section>
 				<footer slot="modal-footer" class="modal-footer">
 					<div class="row">
@@ -45,7 +47,9 @@
 		$.ajax({
 			url:"http://127.0.0.1:8081/cereso/administrador/consulController/index",
 			type:"POST",
-			data: {nombre:valor},
+			data: {nombre:valor,
+				   apellido:valor
+				  },
 			success:function(respuesta){
 				alert(respuesta);
 			}

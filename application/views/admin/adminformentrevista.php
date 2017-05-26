@@ -1,6 +1,6 @@
 <?php $this->load->view('admin/admincabecera.php');?>
 	<div class="navegacion1">
-		<h1><b><span style="color:orange">Entrevista Psicologica de <?php echo $info->nombre; ?></b></h1>	
+		<h1><b><span style="color:orange">Entrevista Psicologica de <?php echo $info->nombre . " ". $info->apellido; ?></b></h1>	
 
 	</div>
  
@@ -12,6 +12,7 @@
 					<span> | </span>
 					
 						<input name="nombre" type="hidden" value="<?php echo $info->nombre; ?>"></input>
+						<input name="apellido" type="hidden" value="<?php echo $info->apellido; ?>"></input>
 						<a href="#" onclick="$('#nombre').submit()">Formatos </a> 
 					<span> | </span>
 					<a class="nav-active">Entrevista Psicologica </a>
@@ -21,7 +22,7 @@
 	  		<div class="col-sm-6 col-sm-offset-3 form-box">
 				<form class="login-form" action="<?=base_url()?>EntrePsico2" method="post" role="form">
 					<div class="form-group">
-			            <label class="sr-only" for="form-name">Fecha</label>
+			            <p>Fecha</p>
 			            <input type="name" name="fecha" placeholder="Fecha..." class="form-email form-control" id="form-email" value="<?php setlocale(LC_ALL,"es_ES"); 
 			            	$mes = date("F");
 			            	//$arrayName = array('' => , );
@@ -37,39 +38,39 @@
 			            	echo date("d") . " de " . $mesdef . " del " . date("Y"); ?>">
 			        </div>
 			        <div class="form-group">
-			            <label class="sr-only" for="form-name">Nombre</label>
+			            <p>Nombre</p>
 			            <input type="name" name="nombre" placeholder="Nombre" class="form-email form-control" id="form-email" 
-			            	value="<?php echo $info->nombre;?>">
+			            	value="<?php echo $info->nombre . " " . $info->apellido;?>">
 			        </div>
 			        <div class="form-group">
-		                <label class="sr-only" for="form-name">Fecha de nacimiento</label>
+		                <p>Fecha de nacimiento</p>
 		                <input type="name" name="fechanacimi" placeholder="Fecha de nacimiento" class="form-email form-control" id="form-email" value="<?php echo $info->fechaNac;?>">
 		            </div>
 		             <div class="form-group">
-		                <label class="sr-only" for="form-name">Recidencia</label>
+		                <p>Recidencia</p>
 		               <input type="name" name="recidencia" placeholder="Residencia" class="form-email form-control" id="form-email">
 		            </div>
 
 		            <div class="form-group">
-		                <label class="sr-only" for="form-name">Ocupación</label>
+		                <p>Ocupación</p>
 		               <input type="name" name="ocupacion" placeholder="Ocupación" class="form-email form-control" id="form-email" value="<?php echo $info->ocupacion;?>">
 		            </div>
 		            
 		            <div class="form-group">
-		                <label class="sr-only" for="form-name">Estado civil</label>
+		                <p>Estado civil</p>
 		                <input type="name" name="estadocivil" placeholder="Estado Civil" class="form-email form-control" id="form-email" value="<?php echo $info->estadoCiv;?>">
 		            </div>
 		       
 		            <div class="form-group">
-		                <label class="sr-only" for="form-name">Delitos</label>
+		                <p>Delitos</p>
 		               <textarea class="form-email form-control" rows="3" name="delito" placeholder="Delitos"></textarea>
 		            </div>
 		            <div class="form-group">
-		                <label class="sr-only" for="form-name">Motivo de la consulta</label>
+		                <p>Motivo de la consulta</p>
 		                <input type="name" name="mtvconsulta" placeholder="Motivo de la consulta" class="form-email form-control" id="form-email">
 		            </div>
 		            <div class="form-group">
-		                <label class="sr-only" for="form-name">Edad</label>
+		                <p>Edad</p>
 		                <input type="name" name="edad" placeholder="Edad" class="form-email form-control" id="form" value="<?php
 		                	$fecha=$info->fechaNac;
 		                	list($Y,$m,$d)= explode("-", $fecha); 
@@ -77,28 +78,29 @@
 		                ?>">
 		            </div>
 		            <div class="form-group">
-		                <label class="sr-only" for="form-name">Lugar de nacimiento</label>
+		                <p>Lugar de nacimiento</p>
 		                <input type="name" name="lugnacimiento" placeholder="Lugar de nacimiento" class="form-email form-control" id="form-email" value="<?php echo $info->lugNaci;?>">
 		            </div>
 		            <div class="form-group">
-		                <label class="sr-only" for="form-name">Domicilio</label>
+		                <p>Domicilio</p>
 		                <input type="name" name="domicilio" placeholder="Domicilio" class="form-email form-control" id="form-email" value="<?php echo $info->domicilio;?>">
 		            </div>
 		            <div class="form-group">
-		                <label class="sr-only" for="form-name">Escolaridad</label>
+		                <p>Escolaridad</p>
 		                <input type="name" name="escolaridad" placeholder="Escolaridad" class="form-email form-control" id="form-email" value="<?php echo $info->escolaridad;?>">
 		            </div>
 		            <div class="form-group">
 		            	<h4>2.-  Datos Familiares</h4>
-		            	<!-- <label class="sr-only" for="form-name"></label> -->
+		            	<!-- <p></p> -->
 		            </div>
 		             <div class="form-group">
-			            <label class="sr-only" for="form-name">Nombre del padre</label>
+			            <p>Nombre del padre</p>
 			            <input type="name" name="nombrePa" placeholder="Nombre del padre" class="form-email form-control" id="form-email" 
 			            	value="">
 			        </div>
 			         <div class="form-group">
-			        	 <!-- <label class="sr-only" for="form-name">Estado civil</label> -->
+			         	 <p>Escolaridad del padre</p>
+			        	 <!-- <p>Estado civil</p> -->
 			            <select class="form-control" name="escolaridadPa">...
 			            	<option disabled selected hiddent> Escolaridad</option>
 			            	<option>Prescolar</option>
@@ -112,20 +114,21 @@
 			            </select>
 			        </div>
 		            <div class="form-group">
-		                <label class="sr-only" for="form-name">Ocupación del padre</label>
+		                <p>Ocupación del padre</p>
 		               <input type="name" name="ocupacionPa" placeholder="Ocupación del padre" class="form-email form-control" id="form-email" value="">
 		            </div>
 		            <div class="form-group">
-		                <label class="sr-only" for="form-name">Edad del padre</label>
+		                <p>Edad del padre</p>
 		                <input type="name" name="edadPa" placeholder="Edad del padre" class="form-email form-control" id="form-email">
 		            </div>
 		            <div class="form-group">
-			            <label class="sr-only" for="form-name">Nombre de la madre</label>
+			            <p>Nombre de la madre</p>
 			            <input type="name" name="nombreMa" placeholder="Nombre de la madre" class="form-email form-control" id="form-email" 
 			            	value="">
 			        </div>
 			         <div class="form-group">
-			        	 <!-- <label class="sr-only" for="form-name">Estado civil</label> -->
+			         	 <p>Escolaridad de la madre</p>
+			        	 <!-- <p>Estado civil</p> -->
 			            <select class="form-control" name="escolaridadMa">...
 			            	<option disabled selected hiddent> Escolaridad</option>
 			            	<option>Prescolar</option>
@@ -139,16 +142,16 @@
 			            </select>
 			        </div>
 		            <div class="form-group">
-		                <label class="sr-only" for="form-name">Ocupación de la madre</label>
+		                <p>Ocupación de la madre</p>
 		               <input type="name" name="ocupacionMa" placeholder="Ocupación de la madre" class="form-email form-control" id="form-email" value="">
 		            </div>
 		            <div class="form-group">
-		                <label class="sr-only" for="form-name">Edad de la madre</label>
+		                <p>Edad de la madre</p>
 		                <input type="name" name="edadMa" placeholder="Edad de la madre" class="form-email form-control" id="form-email">
 		            </div>
 		             <div class="form-group">
 		            	<h4>2.1.-  Datos Familiares de hermanos</h4>
-		            	<!-- <label class="sr-only" for="form-name"></label> -->
+		            	<!-- <p></p> -->
 		            </div>
 			            <table class="table bg-info"  id="tabla">
 							<tr class="fila-fija">
@@ -164,55 +167,55 @@
 					</div>
 					<div class="form-group">
 		            	<h4>3.-  Antecedentes del interno</h4>
-		            	<!-- <label class="sr-only" for="form-name"></label> -->
+		            	<!-- <p></p> -->
 		            </div>
 					<div class="form-group">
-		                <label class="sr-only" for="form-name">Antecentes del interno</label>
+		                <p>Antecentes del interno</p>
 		                <!-- <input type="name" name="descripcion" placeholder="Descripción" class="form-email form-control" id="form-email"> -->
 		            	<textarea class="form-control" rows="3" name="antecedentes" placeholder="Antecedentes del interno"></textarea>
 		            </div>
 		            <div class="form-group">
 		            	<h4>4.- Factores que intervinieron</h4>
-		            	<!-- <label class="sr-only" for="form-name"></label> -->
+		            	<!-- <p></p> -->
 		            </div>
 		            <div class="form-group">
-		                <label class="sr-only" for="form-name">Factores que intervinieron en la comision del delito</label>
+		                <p>Factores que intervinieron en la comision del delito</p>
 		                <!-- <input type="name" name="descripcion" placeholder="Descripción" class="form-email form-control" id="form-email"> -->
 		            	<textarea class="form-control" rows="3" name="factoresIntCons" placeholder="Factores que intervinieron en la comision del delito"></textarea>
 		            </div>
 		            <div class="form-group">
 		            	<h4>5.- Escolaridad</h4>
-		            	<!-- <label class="sr-only" for="form-name"></label> -->
+		            	<!-- <p></p> -->
 		            </div>
 		            <div class="form-group">
-		                <label class="sr-only" for="form-name">Escolaridad</label>
+		                <p>Escolaridad</p>
 		                <!-- <input type="name" name="descripcion" placeholder="Descripción" class="form-email form-control" id="form-email"> -->
 		            	<textarea class="form-control" rows="3" name="escolaridad2" placeholder="Escolaridad"></textarea>
 		            </div>
 		            <div class="form-group">
 		            	<h4>6.- Actividades</h4>
-		            	<!-- <label class="sr-only" for="form-name"></label> -->
+		            	<!-- <p></p> -->
 		            </div>
 		            <div class="form-group">
-		                <label class="sr-only" for="form-name">Actividades</label>
+		                <p>Actividades</p>
 		                <!-- <input type="name" name="descripcion" placeholder="Descripción" class="form-email form-control" id="form-email"> -->
 		            	<textarea class="form-control" rows="3" name="actividades" placeholder="Actividades"></textarea>
 		            </div>
 		            <div class="form-group">
 		            	<h4>6.- Relaciones familiares</h4>
-		            	<!-- <label class="sr-only" for="form-name"></label> -->
+		            	<!-- <p></p> -->
 		            </div>
 		            <div class="form-group">
-		                <label class="sr-only" for="form-name">Relaciones familiares</label>
+		                <p>Relaciones familiares</p>
 		                <!-- <input type="name" name="descripcion" placeholder="Descripción" class="form-email form-control" id="form-email"> -->
 		            	<textarea class="form-control" rows="3" name="relacFami" placeholder="Relaciones Familiares"></textarea>
 		            </div>
 		            <div class="form-group">
 		            	<h4>Examen mental</h4>
-		            	<!-- <label class="sr-only" for="form-name"></label> -->
+		            	<!-- <p></p> -->
 		            </div>
 		            <div class="form-group">
-			        	 <!-- <label class="sr-only" for="form-name">Estado civil</label> -->
+			        	<p>Relacion entre la edad aparente y edad real</p>
 			            <select class="form-control" name="relacion">...
 			            	<option disabled selected hiddent> Relacion entre la edad aparente y edad real</option>
 			            	<option>Parece mas joven</option>
@@ -221,7 +224,7 @@
 			            </select>
 			        </div>
 			        <div class="form-group">
-			        	 <!-- <label class="sr-only" for="form-name">Estado civil</label> -->
+			        	<p>Vesido</p>
 			            <select class="form-control" name="vestio">...
 			            	<option disabled selected hiddent>Vesido</option>
 			            	<option>Apropiado</option>
@@ -231,7 +234,7 @@
 			            </select>
 			        </div>
 			        <div class="form-group">
-			        	 <!-- <label class="sr-only" for="form-name">Estado civil</label> -->
+			        	<p>Higiene personal</p>
 			            <select class="form-control" name="higiene">...
 			            	<option disabled selected hiddent>Higiene personal</option>
 			            	<option>Buena</option>
@@ -240,7 +243,7 @@
 			            </select>
 			        </div>
 			        <div class="form-group">
-			        	 <!-- <label class="sr-only" for="form-name">Estado civil</label> -->
+			        	<p>Apariencia total<</p>
 			            <select class="form-control" name="apariencia">...
 			            	<option disabled selected hiddent>Apariencia total</option>
 			            	<option>Limpio</option>
@@ -249,7 +252,7 @@
 			            </select>
 			        </div>
 			        <div class="form-group">
-			        	 <!-- <label class="sr-only" for="form-name">Estado civil</label> -->
+			        	<p>Postura</p>
 			            <select class="form-control" name="postura">...
 			            	<option disabled selected hiddent>Postura</option>
 			            	<option>Normal</option>
@@ -259,7 +262,7 @@
 			            </select>
 			        </div>
 			        <div class="form-group">
-			        	 <!-- <label class="sr-only" for="form-name">Estado civil</label> -->
+			        	<p>Forma de caminar</p>
 			            <select class="form-control" name="forma">...
 			            	<option disabled selected hiddent> Forma de caminar</option>
 			            	<option>Normal</option>
@@ -271,9 +274,9 @@
 			            </select>
 			        </div>
 			        <div class="form-group">
-			        	 <!-- <label class="sr-only" for="form-name">Estado civil</label> -->
+			        	<p>Expresión facial reflejado</p>
 			            <select class="form-control" name="expesionfare">...
-			            	<option disabled selected hiddent>Expresion facial reflejado</option>
+			            	<option disabled selected hiddent>Expresión facial reflejado</option>
 			            	<option>No afectado particularmente</option>
 			            	<option>Depresion</option>
 			            	<option>Ansiedad</option>
@@ -283,7 +286,7 @@
 			            </select>
 			        </div>
 			        <div class="form-group">
-			        	 <!-- <label class="sr-only" for="form-name">Estado civil</label> -->
+			        	<p>Expresiones faciales</p>
 			            <select class="form-control" name="expresionesfa">...
 			            	<option disabled selected hiddent>Expresiones faciales</option>
 			            	<option>Apropiado al contenido verbal</option>
@@ -293,7 +296,7 @@
 			            </select>
 			        </div>
 			        <div class="form-group">
-			        	 <!-- <label class="sr-only" for="form-name">Estado civil</label> -->
+			        	 <p>Interación general con el examinador</p>
 			            <select class="form-control" name="intGenExam">...
 			            	<option disabled selected hiddent>Interación general con el examinador</option>
 			            	<option>Coperador</option>
@@ -301,7 +304,7 @@
 			            </select>	
 			        </div>
 			        <div class="form-group">
-			        	 <!-- <label class="sr-only" for="form-name">Estado civil</label> -->
+			        	<p>Interación específica con el examinador</p>
 			            <select class="form-control" name="interaciones">...
 			            	<option disabled selected hiddent>Interación específica con el examinador</option>
 			            	<option>Apropiado</option>
@@ -316,7 +319,7 @@
 			            </select>
 			        </div>
 			        <div class="form-group">
-			        	 <!-- <label class="sr-only" for="form-name">Estado civil</label> -->
+			        	<p>La actividad motora es:</p>
 			            <select class="form-control" name="actividadmo">...
 			            	<option disabled selected hiddent>La actividad motora es:</option>
 			            	<option>Espontanea</option>
@@ -327,7 +330,7 @@
 			            </select>
 			        </div>
 			        <div class="form-group">
-			        	 <!-- <label class="sr-only" for="form-name">Estado civil</label> -->
+			        	<p>Conducta manifiesta:</p>
 			            <select class="form-control" name="conductama">...
 			            	<option disabled selected hiddent>Conducta manifiesta:</option>
 			            	<option>Llanto</option>
@@ -338,7 +341,7 @@
 			            </select>
 			        </div>
 			        <div class="form-group">
-			        	 <!-- <label class="sr-only" for="form-name">Estado civil</label> -->
+			        	<p>Tono de voz:</p>
 			            <select class="form-control" name="tonovoz">...
 			            	<option disabled selected hiddent>Tono de voz:</option>
 			            	<option>Normal</option>
@@ -349,7 +352,7 @@
 			            </select>
 			        </div>
 			        <div class="form-group">
-			        	 <!-- <label class="sr-only" for="form-name">Estado civil</label> -->
+			        	<p>Problemas Interpesonales ocurridos específicamente con:</p>
 			            <select class="form-control" name="problemasint">...
 			            	<option disabled selected hiddent>Problemas Interpesonales ocurridos específicamente con:</option>
 			            	<option>No mayores en su vida diaria</option>
@@ -362,7 +365,7 @@
 			            </select>
 			        </div>
 			        <div class="form-group">
-			        	 <!-- <label class="sr-only" for="form-name">Estado civil</label> -->
+			        	 <p>Historia de conductas antisociales</p>
 			            <select class="form-control" name="historiacond">...
 			            	<option disabled selected hiddent>Historia de conductas antisociales.</option>
 			            	<option>Ninguna</option>
@@ -379,7 +382,7 @@
 			            </select>
 			        </div>
 			        <div class="form-group">
-			        	 <!-- <label class="sr-only" for="form-name">Estado civil</label> -->
+			        	<p>Conducta antisocial habitual</p>
 			            <select class="form-control" name="conductaant">...
 			            	<option disabled selected hiddent>Conducta antisocial habitual.</option>
 			            	<option>Ninguna</option>
@@ -396,17 +399,17 @@
 			            </select>
 			        </div>
 			        <div class="form-group">
-		                <label class="sr-only" for="form-name">Historial de problemas legales</label>
+		                <p>Historial de problemas legales</p>
 		                <!-- <input type="name" name="descripcion" placeholder="Descripción" class="form-email form-control" id="form-email"> -->
 		            	<textarea class="form-control" rows="3" name="historilprole" placeholder="Historial de problemas legales"></textarea>
 		            </div>
 		            <div class="form-group">
-		                <label class="sr-only" for="form-name">Problemas legales habituales </label>
+		                <p>Problemas legales habituales </p>
 		                <!-- <input type="name" name="descripcion" placeholder="Descripción" class="form-email form-control" id="form-email"> -->
 		            	<textarea class="form-control" rows="3" name="problemaslega" placeholder="Problemas legales habituales"></textarea>
 		            </div>
 		            <div class="form-group">
-			        	 <!-- <label class="sr-only" for="form-name">Estado civil</label> -->
+			        	 <p>Clasificación general de ajustes interpesonal</p>
 			            <select class="form-control" name="ajustesinte">...
 			            	<option disabled selected hiddent>Clasificación general de ajustes interpesonal.</option>
 			            	<option>Inmadurez consistente y pobre socialización</option>
@@ -415,22 +418,22 @@
 			            </select>
 			        </div>
 			        <div class="form-group">
-		                <label class="sr-only" for="form-name">Autoconcepto: </label>
+		                <p>Autoconcepto: </p>
 		                <!-- <input type="name" name="descripcion" placeholder="Descripción" class="form-email form-control" id="form-email"> -->
 		            	<textarea class="form-control" rows="3" name="autoconcepto" placeholder="Autoconcepto"></textarea>
 		            </div>
 		            <div class="form-group">
-		                <label class="sr-only" for="form-name">Expectativas a futuro</label>
+		                <p>Expectativas a futuro</p>
 		                <!-- <input type="name" name="descripcion" placeholder="Descripción" class="form-email form-control" id="form-email"> -->
 		            	<textarea class="form-control" rows="3" name="expectativafu" placeholder="Expectativas a futuro"></textarea>
 		            </div>
 		            <div class="form-group">
-		                <label class="sr-only" for="form-name">Impresión diagnostica</label>
+		                <p>Impresión diagnostica</p>
 		                <!-- <input type="name" name="descripcion" placeholder="Descripción" class="form-email form-control" id="form-email"> -->
 		            	<textarea class="form-control" rows="3" name="impresiondia" placeholder="Impresión diagnostica"></textarea>
 		            </div>
 		            <div class="form-group">
-		                <label class="sr-only" for="form-name">observaciones</label>
+		                <p>Observaciones</p>
 		                <!-- <input type="name" name="descripcion" placeholder="Descripción" class="form-email form-control" id="form-email"> -->
 		            	<textarea class="form-control" rows="3" name="observaciones" placeholder="Observaciones"></textarea>
 		            </div>
