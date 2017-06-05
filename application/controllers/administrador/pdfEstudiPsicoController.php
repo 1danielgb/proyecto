@@ -15,7 +15,7 @@ class pdfEstudiPsicoController extends CI_Controller {
     //die();
     // Se obtienen los datos de la base de datos
     $personalidad = $this->m_pdf->pdfestudipsico();
- 
+    $personalidad2 = $this->m_pdf->pdfestudipsico2();
     // Creacion del PDF
 
     /*
@@ -238,127 +238,130 @@ class pdfEstudiPsicoController extends CI_Controller {
        $this->pdf->SetFont('Arial','',11);
        $this->pdf->MultiCell(0,5,$intro,0,$J,false);
        $this->pdf->Ln('10');
+      //Foreach de la tabla 2 de estudio psicologico
+       foreach ($personalidad2 as $persona2) {
+           //Version de tortura
+        $this->pdf->SetFont('Arial', 'B', 10);
+        $this->pdf->MultiCell(0,5,utf8_decode('VERSION DE TORTURA'),0,$J,false);
+        $this->pdf->Ln('5');
+
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->MultiCell(0,5,'"'.utf8_decode($persona->vertur).'"',0,$J,FALSE);
+        $this->pdf->Ln('10');
+
+        //Titulo reporte de preguntas
+        $this->pdf->SetFont('Arial', 'B', 10);
+        $this->pdf->MultiCell(0,5,utf8_decode('REPORTE DE PREGUNTAS DEL CAPITULO VI DE ESTAMBUL SIGNOS PSICOLÓGICOS INDICATIVOS DE TORTURA'),0,$J,false);
+        $this->pdf->Ln('5');
+
+        //Reporte de preguntas del capitulo VI de estambul
+        $this->pdf->SetFont('Arial', 'B', 12);
+        $this->pdf->MultiCell(0,5,utf8_decode('1. Reexperimentación del trauma'),0,$J,false);
+        $this->pdf->Ln('3');
+
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->MultiCell(0,5,'    Respuesta:  '.'"'.utf8_decode($persona2->reexpertor).'"',0,$J,FALSE);
+        $this->pdf->Ln('10');
+
+        //PREGUNTA 2
+        $this->pdf->SetFont('Arial', 'B', 12);
+        $this->pdf->MultiCell(0,5,utf8_decode('2. Invitación emocional'),0,$J,false);
+        $this->pdf->Ln('3');
+
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->MultiCell(0,5,'    Respuesta:  '. utf8_decode($persona2->inviemo),0,$J,FALSE);
+        $this->pdf->Ln('10');
+
+        //pregunta 3
+        $this->pdf->SetFont('Arial', 'B', 12);
+        $this->pdf->MultiCell(0,5,utf8_decode('3. Hiperexitación'),0,$J,false);
+        $this->pdf->Ln('3');
+
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->MultiCell(0,5,'    Respuesta:  '. utf8_decode($persona2->hiperex),0,$J,FALSE);
+        $this->pdf->Ln('10');
+
+        //pregunta 4
+        $this->pdf->SetFont('Arial', 'B', 12);
+        $this->pdf->MultiCell(0,5,utf8_decode('4. Sintomas de depresión'),0,$J,false);
+        $this->pdf->Ln('3');
+
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->MultiCell(0,5,'    Respuesta:  '. utf8_decode($persona2->sintdepre),0,$J,FALSE);
+        $this->pdf->Ln('10');
+
+        //pregunta 5
+        $this->pdf->SetFont('Arial', 'B', 12);
+        $this->pdf->MultiCell(0,5,utf8_decode('4. Disminución de la autoestima y desesperanza en cuanto al futuro'),0,$J,false);
+        $this->pdf->Ln('3');
+
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->MultiCell(0,5,'    Respuesta:  '. utf8_decode($persona2->disaut),0,$J,FALSE);
+        $this->pdf->Ln('10');  
+
+        //pregunta 6
+        $this->pdf->SetFont('Arial', 'B', 12);
+        $this->pdf->MultiCell(0,5,utf8_decode('6. Disociación. Despersonalización y comportamiento atípico'),0,$J,false);
+        $this->pdf->Ln('3');
+
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->MultiCell(0,5,'    Respuesta:  '. utf8_decode($persona2->disodesp),0,$J,FALSE);
+        $this->pdf->Ln('10');
+        //pregunta 7
+        $this->pdf->SetFont('Arial', 'B', 12);
+        $this->pdf->MultiCell(0,5,utf8_decode('7. Quejas psicosomáticas'),0,$J,false);
+        $this->pdf->Ln('3');
+
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->MultiCell(0,5,'    Respuesta:  '. utf8_decode($persona2->quejaspsi),0,$J,FALSE);
+        $this->pdf->Ln('10');
+
+        //pregunta 8
+        $this->pdf->SetFont('Arial', 'B', 12);
+        $this->pdf->MultiCell(0,5,utf8_decode('8. Psicosis'),0,$J,false);
+        $this->pdf->Ln('3');
+
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->MultiCell(0,5,'    Respuesta:  '. utf8_decode($persona2->psicosis),0,$J,FALSE);
+        $this->pdf->Ln('10');
+        //pregunta 9
+        $this->pdf->SetFont('Arial', 'B', 12);
+        $this->pdf->MultiCell(0,5,utf8_decode('9. Deterioro neuropsicológico'),0,$J,false);
+        $this->pdf->Ln('3');
+
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->MultiCell(0,5,'    Respuesta:  '. utf8_decode($persona2->deteneupsi),0,$J,FALSE);
+        $this->pdf->Ln('10');
+        //Diagnostico
+        $this->pdf->SetFont('Arial', 'B', 12);
+        $this->pdf->MultiCell(0,5,utf8_decode('DIAGNOSTICO'),0,$J,false);
+        $this->pdf->Ln('3');
+
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->MultiCell(0,5,utf8_decode($persona2->diagnostico),0,$J,FALSE);
+        $this->pdf->Ln('10');
+
+        //Firma de la psicologa
+        $this->pdf->SetFont('Arial', 'B', 12);
+        $this->pdf->MultiCell(0,5,utf8_decode('COLIMA, COL. A '.$persona->fecha),0,$C,false);
+        $this->pdf->Ln('30'); 
+        //linea para firma
+        $this->pdf->SetFont('Arial', 'B', 10);
+        $this->pdf->Cell(180,10,'_________________________________________________________________',0,0,'C');
+        $this->pdf->Cell(30);
+        $this->pdf->Ln('5');
+        //Psicologo
+        $this->pdf->SetFont('Arial', 'B', 10);
+        $this->pdf->Cell(190,10,'PSIC. ENEDELIA ROJAS PIZANO',0,0,'C');
+        $this->pdf->Cell(30);
+        $this->pdf->Ln('5');
+        //Cordinacion
+        $this->pdf->SetFont('Arial', 'B', 10);
+        $this->pdf->Cell(190,10,'COORD. DEPTO DE PSICOLOGIA',0,0,'C');
+        $this->pdf->Cell(30);
+        $this->pdf->Ln('10');
+       }
       
-      //Version de tortura
-      $this->pdf->SetFont('Arial', 'B', 10);
-      $this->pdf->MultiCell(0,5,utf8_decode('VERSION DE TORTURA'),0,$J,false);
-      $this->pdf->Ln('5');
-
-      $this->pdf->SetFont('Arial', '', 12);
-      $this->pdf->MultiCell(0,5,'"'.utf8_decode($persona->vertur).'"',0,$J,FALSE);
-      $this->pdf->Ln('10');
-
-      //Titulo reporte de preguntas
-      $this->pdf->SetFont('Arial', 'B', 10);
-      $this->pdf->MultiCell(0,5,utf8_decode('REPORTE DE PREGUNTAS DEL CAPITULO VI DE ESTAMBUL SIGNOS PSICOLÓGICOS INDICATIVOS DE TORTURA'),0,$J,false);
-      $this->pdf->Ln('5');
-
-      //Reporte de preguntas del capitulo VI de estambul
-      $this->pdf->SetFont('Arial', 'B', 12);
-      $this->pdf->MultiCell(0,5,utf8_decode('1. Reexperimentación del trauma'),0,$J,false);
-      $this->pdf->Ln('3');
-
-      $this->pdf->SetFont('Arial', '', 12);
-      $this->pdf->MultiCell(0,5,'    Respuesta:  '.'"'.utf8_decode($persona->reexpertor).'"',0,$J,FALSE);
-      $this->pdf->Ln('10');
-
-      //PREGUNTA 2
-      $this->pdf->SetFont('Arial', 'B', 12);
-      $this->pdf->MultiCell(0,5,utf8_decode('2. Invitación emocional'),0,$J,false);
-      $this->pdf->Ln('3');
-
-      $this->pdf->SetFont('Arial', '', 12);
-      $this->pdf->MultiCell(0,5,'    Respuesta:  '. utf8_decode($persona->inviemo),0,$J,FALSE);
-      $this->pdf->Ln('10');
-
-      //pregunta 3
-      $this->pdf->SetFont('Arial', 'B', 12);
-      $this->pdf->MultiCell(0,5,utf8_decode('3. Hiperexitación'),0,$J,false);
-      $this->pdf->Ln('3');
-
-      $this->pdf->SetFont('Arial', '', 12);
-      $this->pdf->MultiCell(0,5,'    Respuesta:  '. utf8_decode($persona->hiperex),0,$J,FALSE);
-      $this->pdf->Ln('10');
-
-      //pregunta 4
-      $this->pdf->SetFont('Arial', 'B', 12);
-      $this->pdf->MultiCell(0,5,utf8_decode('4. Sintomas de depresión'),0,$J,false);
-      $this->pdf->Ln('3');
-
-      $this->pdf->SetFont('Arial', '', 12);
-      $this->pdf->MultiCell(0,5,'    Respuesta:  '. utf8_decode($persona->sintdepre),0,$J,FALSE);
-      $this->pdf->Ln('10');
-
-      //pregunta 5
-      $this->pdf->SetFont('Arial', 'B', 12);
-      $this->pdf->MultiCell(0,5,utf8_decode('4. Disminución de la autoestima y desesperanza en cuanto al futuro'),0,$J,false);
-      $this->pdf->Ln('3');
-
-      $this->pdf->SetFont('Arial', '', 12);
-      $this->pdf->MultiCell(0,5,'    Respuesta:  '. utf8_decode($persona->disaut),0,$J,FALSE);
-      $this->pdf->Ln('10');  
-
-      //pregunta 6
-      $this->pdf->SetFont('Arial', 'B', 12);
-      $this->pdf->MultiCell(0,5,utf8_decode('6. Disociación. Despersonalización y comportamiento atípico'),0,$J,false);
-      $this->pdf->Ln('3');
-
-      $this->pdf->SetFont('Arial', '', 12);
-      $this->pdf->MultiCell(0,5,'    Respuesta:  '. utf8_decode($persona->disodesp),0,$J,FALSE);
-      $this->pdf->Ln('10');
-      //pregunta 7
-      $this->pdf->SetFont('Arial', 'B', 12);
-      $this->pdf->MultiCell(0,5,utf8_decode('7. Quejas psicosomáticas'),0,$J,false);
-      $this->pdf->Ln('3');
-
-      $this->pdf->SetFont('Arial', '', 12);
-      $this->pdf->MultiCell(0,5,'    Respuesta:  '. utf8_decode($persona->quejaspsi),0,$J,FALSE);
-      $this->pdf->Ln('10');
-
-      //pregunta 8
-      $this->pdf->SetFont('Arial', 'B', 12);
-      $this->pdf->MultiCell(0,5,utf8_decode('8. Psicosis'),0,$J,false);
-      $this->pdf->Ln('3');
-
-      $this->pdf->SetFont('Arial', '', 12);
-      $this->pdf->MultiCell(0,5,'    Respuesta:  '. utf8_decode($persona->psicosis),0,$J,FALSE);
-      $this->pdf->Ln('10');
-      //pregunta 9
-      $this->pdf->SetFont('Arial', 'B', 12);
-      $this->pdf->MultiCell(0,5,utf8_decode('9. Deterioro neuropsicológico'),0,$J,false);
-      $this->pdf->Ln('3');
-
-      $this->pdf->SetFont('Arial', '', 12);
-      $this->pdf->MultiCell(0,5,'    Respuesta:  '. utf8_decode($persona->deteneupsi),0,$J,FALSE);
-      $this->pdf->Ln('10');
-      //Diagnostico
-      $this->pdf->SetFont('Arial', 'B', 12);
-      $this->pdf->MultiCell(0,5,utf8_decode('DIAGNOSTICO'),0,$J,false);
-      $this->pdf->Ln('3');
-
-      $this->pdf->SetFont('Arial', '', 12);
-      $this->pdf->MultiCell(0,5,utf8_decode($persona->diagnostico),0,$J,FALSE);
-      $this->pdf->Ln('10');
-
-      //Firma de la psicologa
-      $this->pdf->SetFont('Arial', 'B', 12);
-      $this->pdf->MultiCell(0,5,utf8_decode('COLIMA, COL. A '.$persona->fecha),0,$C,false);
-      $this->pdf->Ln('30'); 
-      //linea para firma
-      $this->pdf->SetFont('Arial', 'B', 10);
-      $this->pdf->Cell(180,10,'_________________________________________________________________',0,0,'C');
-      $this->pdf->Cell(30);
-      $this->pdf->Ln('5');
-      //Psicologo
-      $this->pdf->SetFont('Arial', 'B', 10);
-      $this->pdf->Cell(190,10,'PSIC. ENEDELIA ROJAS PIZANO',0,0,'C');
-      $this->pdf->Cell(30);
-      $this->pdf->Ln('5');
-      //Cordinacion
-      $this->pdf->SetFont('Arial', 'B', 10);
-      $this->pdf->Cell(190,10,'COORD. DEPTO DE PSICOLOGIA',0,0,'C');
-      $this->pdf->Cell(30);
-      $this->pdf->Ln('10');
     // /* Se define el titulo, márgenes izquierdo, derecho y
     //  * el color de relleno predeterminado
     //  */
@@ -413,7 +416,7 @@ class pdfEstudiPsicoController extends CI_Controller {
      * D = Envia el pdf para descarga
      *
      */
-    $nombrepdf=utf8_decode($persona->nombreInter . " " . $persona->apellidoInter);
+    $nombrepdf=utf8_decode($persona->nombreInter ." ". $persona->apellidoInter);
 
     $carpeta = 'C:/xampp/htdocs/cereso/Formatos/estudiopsicologico/';
     $this->pdf->Output($carpeta.$nombrepdf.'.pdf','F');

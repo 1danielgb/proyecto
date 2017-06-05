@@ -85,6 +85,13 @@ $route['PdfFormAct']='administrador/pdfFormActController/index';
 $route['EstuClini']= 'administrador/consulController/estuclinico';
 $route['EstuClini2'] = 'administrador/consulController/estuclinipost';
 $route['PdfEstuClini']='administrador/pdfEstCliniController/index';
+//Search of pdf 
+$route['buscar']= 'administrador/consulController/buscar';
+//$route['Buscar2']= 'administrador/consulController/buscar2';
+//$route['Buscar3']= 'administrador/consulController/buscar3';
+//$route['Buscar4']= 'administrador/consulController/buscar4';
+//$route['Buscar5']= 'administrador/consulController/buscar5';
+//$route['Buscar6']= 'administrador/consulController/buscar6';
 //routes of the archive historic
 $route['Archivo'] = 'administrador/archivoController/index';
 $route['translate_uri_dashes'] = FALSE;

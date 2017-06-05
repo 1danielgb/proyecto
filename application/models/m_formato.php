@@ -88,16 +88,22 @@ class m_formato extends CI_Model
 		//consulta para llenar la base de datos 
 			$sql3 =	"INSERT INTO entrevistapsico(identrevista,fecha,nombreint,fechanacimi,residencia,ocupacion,estadocivil,delitos,mtvconsulta,edad,lugarNaci,escolaridad,
 												domicilio,nomPadre,escoPadre,ocupPadre,edadPadre,nomMadre,escoMadre,ocupMadre,edadMadre,antInterno,factInterComDeli,escolaridad2,
-												actividades,relaFami,relacionEdad,vestido,igienePers,apareTotal,postura,formaCaminar,expFacialRel,expFacial,intGenExam,intEspExam,
-												actiMotora,conducta,tonoVoz,probInterPers,condAntiSoci,condAntiSociAbi,histLegal,problegAbit,clasiGenAjusteInterPerso,autoconcepto,
-												espeFuturo,ImpDiagnostico,observaciones,formato_idformato,idInterno) 
+												formato_idformato,idInterno) 
 
 					 VALUES (null,'$fecha','$nombre','$fechan','$recidencia','$ocupacion','$estadocivil','$delito','$mtvconsulta','$edad',
             '$lugnacimiento','$escolaridad','$domicilio','$nombrePa','$escolaridadPa','$ocupacionPa','$edadPa','$nombreMa','$escolaridadMa','$ocupacionMa',
-            '$edadMa','$antecentes','$factoresIntCons','$escolaridad2','$actividades','$relacFami','$relacion','$vestido','$higiene','$apariencia','$postura',
-            '$forma','$expresionfare','$expresionesfa','$intGenExam','$interaciones','$actividadmo','$conductama','$tonovoz','$problemasint','$historiacond','$conductaant',
-            '$historilprole','$problemaslega','$ajustesinte','$autoconcepto','$expectativafu','$impresiondia','$observaciones','$ultimoId',$idI);";
+            '$edadMa','$antecentes','$factoresIntCons','$escolaridad2','$ultimoId',$idI);";
 			$this->db->query($sql3);
+
+			$ultimoId2 = $this->db->insert_id();
+			$sql4=	"INSERT INTO entrevistapsico2(identrevista2,actividades,relaFami,relacionEdad,vestido,igienePers,apareTotal,postura,formaCaminar,expFacialRel,expFacial,intGenExam,intEspExam,
+												actiMotora,conducta,tonoVoz,probInterPers,condAntiSoci,condAntiSociAbi,histLegal,problegAbit,clasiGenAjusteInterPerso,autoconcepto,
+												espeFuturo,ImpDiagnostico,observaciones) 
+
+					 VALUES ('$ultimoId2','$actividades','$relacFami','$relacion','$vestido','$higiene','$apariencia','$postura',
+            '$forma','$expresionfare','$expresionesfa','$intGenExam','$interaciones','$actividadmo','$conductama','$tonovoz','$problemasint','$historiacond','$conductaant',
+            '$historilprole','$problemaslega','$ajustesinte','$autoconcepto','$expectativafu','$impresiondia','$observaciones');";
+			$this->db->query($sql4);
 			return true;
 	  
 
@@ -124,11 +130,15 @@ class m_formato extends CI_Model
 			// 
 
 			$ultimoId = $this->db->insert_id();																												
-			$SQL2 = "INSERT INTO estupsicologico(idestupsicologico,fecha,nombreInter,apellidoInter,procesoPen,anteceFamyPers,descripEstuPsic,examenMent,nivelIntel,indiceLesOrga,dinamicaPerson,factoresPsicoComDeli,impresionDiag,conclusion,formato_idformato,
-        						 vertur,reexpertor,inviemo,hiperex,sintdepre,disaut,disodesp,quejaspsi,psicosis,deteneupsi,diagnostico) 
-					VALUES (null,'$fecha','$nombre','$apellido','$procePenal','$antecentes','$descripcion','$examen','$nivelInt','$indiceLe','$dinamicaPer','$factPsico','$impresionDiag','$conclusion','$ultimoId',
-        						  '$vertur','$reexpertor','$inviemo','$hiperex','$sintdepre','$disaut','$disodesp','$quejaspsi','$psicosis','$deteneupsi','$diagnostico');";
+			$SQL2 = "INSERT INTO estupsicologico(idestupsicologico,fecha,nombreInter,apellidoInter,procesoPen,anteceFamyPers,descripEstuPsic,examenMent,nivelIntel,indiceLesOrga,dinamicaPerson,factoresPsicoComDeli,impresionDiag,conclusion,
+        						 vertur,formato_idformato) 
+					VALUES (null,'$fecha','$nombre','$apellido','$procePenal','$antecentes','$descripcion','$examen','$nivelInt','$indiceLe','$dinamicaPer','$factPsico','$impresionDiag','$conclusion',
+        						 '$vertur','$ultimoId');";
 			$this->db->query($SQL2);
+			$ultimoId2 = $this->db->insert_id();	
+			$sql3= "INSERT INTO estupsicologico2(idestupsicologico2,reexpertor,inviemo,hiperex,sintdepre,disaut,disodesp,quejaspsi,psicosis,deteneupsi,diagnostico) 
+					VALUES ('$ultimoId2','$reexpertor','$inviemo','$hiperex','$sintdepre','$disaut','$disodesp','$quejaspsi','$psicosis','$deteneupsi','$diagnostico');";
+			$this->db->query($sql3);
 			return true;
 	}
 
@@ -152,10 +162,14 @@ class m_formato extends CI_Model
 			// 
 
 			$ultimoId = $this->db->insert_id();																												
-			$SQL2 = "INSERT INTO estudiobeneficio(idestudiobeneficio,fecha,nombre,sobrenombre,edad,delito,actitudEntrev,examenMen,pruebasApli,nivelInte,indiceLesOrga,dinamicaPerso,impresionDiagn,resultadoTrata,factoresPsicoComiDeli,
-        						 requerimientosTrata,especificacion,sugerencia,formato_idformato) 
-					VALUES (null,'$fecha','$nombre','$sobrenom','$edad','$delito','$actitudTom','$examMen','$prueApli','$nivelInt','$indiceLes','$dinaPerso','$impreDiag','$resulTrata','$menFactPsico','$requerimientos','$especifique','$sugerencia','$ultimoId');";
+			$SQL2 = "INSERT INTO estudiobeneficio(idestudiobeneficio,fecha,nombre,sobrenombre,edad,delito,actitudEntrev,examenMen,pruebasApli,nivelInte,indiceLesOrga,formato_idformato) 
+					VALUES (null,'$fecha','$nombre','$sobrenom','$edad','$delito','$actitudTom','$examMen','$prueApli','$nivelInt','$indiceLes','$ultimoId');";
 			$this->db->query($SQL2);
+
+			$sql3 = "INSERT INTO estudiobeneficio2(idestudiobeneficio2,dinamicaPerso,impresionDiagn,resultadoTrata,factoresPsicoComiDeli,
+        						 requerimientosTrata,especificacion,sugerencia) 
+					VALUES (null,'$dinaPerso','$impreDiag','$resulTrata','$menFactPsico','$requerimientos','$especifique','$sugerencia');";
+			$this->db->query($sql3);
 			return true;
 	}
 
@@ -181,6 +195,35 @@ class m_formato extends CI_Model
 			$ultimoId = $this->db->insert_id();																												
 			$SQL2 = "INSERT INTO actividades(idactividades,fecha,nombre,tratPsico,psicIndiv,psicoGrup,terapiaFami,progInstiExter,formato_idformato) 
 					VALUES (null,'$fecha','$nombre','$trataPsico','$psicoIndi','$psicoGrup','$teraFami','$progInsti','$ultimoId');";
+			$this->db->query($SQL2);
+			return true;
+	}
+
+	public function postestuclinico($fecha,$ubicacion,$nombreInterno,$descripcionInicial,$antFP,$versiondeldelito,
+                                                $examenmental,$pruebasaplicadas,$indiceLO,$Nvlintelectual,$factPsicoDelito,
+                                                $dinamicaResp,$impreDiagnostica){
+
+			$nomfor= "estudio clinico-criminologico de " . $nombreInterno;
+			//echo $nivelInt;
+			//die();
+			//obtines el id de la secion
+			$id=$this->session->userdata('id');
+			//consulta para llenar la tabla de formato
+			$result1 = $this->db->query("SELECT idUsuario from psicologa JOIN usuario on usuario_idUsuario=idUsuario WHERE idpsicologa='$id'");
+			$result2 =$result1->row();			
+			$nom2 =$result2->idUsuario;
+			/*print_r($nom2);
+			//return $result1->result_array();
+			return $result1->row();
+			// print_r($result1);
+			// die();*/
+			$SQL1 = "INSERT INTO formato(idformato,nombre,fecha,nota_idreporte,psicologa_idpsicologa,psicologa_usuario_idUsuario,practicante_idpracticante,practicante_usuario_idUsuario) VALUES (null,'$nomfor','$fecha','0','$id','$nom2',null,null);";
+			$this->db->query($SQL1);
+			// 
+
+			$ultimoId = $this->db->insert_id();																												
+			$SQL2 = "INSERT INTO estuclinicocriminologico(idcriminologico,fecha,ubicacion,nombreInterno,descripcionInicial,anteFP,versiondeldelito,examenmental,pruebasaplicadas,indiceLO,Nvlintelectual,factPsicoDelito,dimamicaResp,impreDiagnostica,formato_idformato) 
+					VALUES (null,'$fecha','$ubicacion','$nombreInterno','$descripcionInicial','$antFP','$versiondeldelito','$examenmental','$pruebasaplicadas','$indiceLO','$Nvlintelectual','$factPsicoDelito','$dinamicaResp','$impreDiagnostica','$ultimoId');";
 			$this->db->query($SQL2);
 			return true;
 	}

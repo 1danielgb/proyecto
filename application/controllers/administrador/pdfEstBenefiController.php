@@ -15,6 +15,7 @@ class pdfEstBenefiController extends CI_Controller {
     //die();
     // Se obtienen los datos de la base de datos
     $personalidad = $this->m_pdf->pdfestubeneficio();
+    $personalidad2= $this->m_pdf->pdfestubeneficio2();
  
     // Creacion del PDF
 
@@ -59,6 +60,7 @@ class pdfEstBenefiController extends CI_Controller {
             //variable para mostrar acentos 
             $this->pdf->SetLeftMargin(13);
             $this->pdf->SetRightMargin(15);
+
             foreach ($personalidad as $persona) {
               //Nombre del interno
               $this->pdf->SetFont('Arial', '', 12);
@@ -111,59 +113,62 @@ class pdfEstBenefiController extends CI_Controller {
               $this->pdf->SetFont('Arial', '', 12);
               $this->pdf->MultiCell(0,5,utf8_decode($persona->indiceLesOrga),0,$J,false);
               $this->pdf->ln('10');
-              // Dinamica de personalidad
+
+              //Foreach para dinamica la tabla 2 de beneficio
+              foreach ($personalidad2 as $persona2) {
+              	// Dinamica de personalidad
               $this->pdf->SetFont('Arial', 'B', 12);
               $this->pdf->MultiCell(0,5,utf8_decode('DINAMICA DE PERSONALIDAD:'),0,$J,false);
               $this->pdf->ln('3');
               $this->pdf->SetFont('Arial', '', 12);
-              $this->pdf->MultiCell(0,5,utf8_decode($persona->dinamicaPerso),0,$J,false);
+              $this->pdf->MultiCell(0,5,utf8_decode($persona2->dinamicaPerso),0,$J,false);
               $this->pdf->ln('10');
               // IMPRESION DIAGNOSTICA
               $this->pdf->SetFont('Arial', 'B', 12);
               $this->pdf->MultiCell(0,5,utf8_decode('IMPRESION DIAGNOSTICA:'),0,$J,false);
               $this->pdf->ln('3');
               $this->pdf->SetFont('Arial', '', 12);
-              $this->pdf->MultiCell(0,5,utf8_decode($persona->impresionDiagn),0,$J,false);
+              $this->pdf->MultiCell(0,5,utf8_decode($persona2->impresionDiagn),0,$J,false);
               $this->pdf->ln('10');
               // RESULTADOS DE TRATAMIENTOS 
               $this->pdf->SetFont('Arial', 'B', 12);
               $this->pdf->MultiCell(0,5,utf8_decode('RESULTADOS DE TRATAMIENTO:'),0,$J,false);
               $this->pdf->ln('3');
               $this->pdf->SetFont('Arial', '', 12);
-              $this->pdf->MultiCell(0,5,utf8_decode($persona->resultadoTrata),0,$J,false);
+              $this->pdf->MultiCell(0,5,utf8_decode($persona2->resultadoTrata),0,$J,false);
               $this->pdf->ln('10');
               // MENCIONE LOS FACTORES PSICOLÓGICOS QUE INTERVINIERON EN LA COMISIÓN DEL DELITO 
               $this->pdf->SetFont('Arial', 'B', 12);
               $this->pdf->MultiCell(0,5,utf8_decode('MENCIONE LOS FACTORES PSICOLÓGICOS QUE INTERVINIERON EN LA COMISIÓN DEL DELITO:'),0,$J,false);
               $this->pdf->ln('3');
               $this->pdf->SetFont('Arial', '', 12);
-              $this->pdf->MultiCell(0,5,utf8_decode($persona->factoresPsicoComiDeli),0,$J,false);
+              $this->pdf->MultiCell(0,5,utf8_decode($persona2->factoresPsicoComiDeli),0,$J,false);
               $this->pdf->ln('10');
               //REQUERIMIENTOS DE CONTINUACIÓN DE TRATAMIENTO
               $this->pdf->SetFont('Arial', 'B', 12);
               $this->pdf->MultiCell(0,5,utf8_decode('REQUERIMIENTOS DE CONTINUACIÓN DE TRATAMIENTO:'),0,$J,false);
               $this->pdf->ln('3');
               $this->pdf->SetFont('Arial', '', 12);
-              $this->pdf->MultiCell(0,5,utf8_decode($persona->requerimientosTrata),0,$J,false);
+              $this->pdf->MultiCell(0,5,utf8_decode($persona2->requerimientosTrata),0,$J,false);
               $this->pdf->ln('10');
               //ESPECIFIQUE
               $this->pdf->SetFont('Arial', 'B', 12);
               $this->pdf->MultiCell(0,5,utf8_decode('ESPECIFIQUE:'),0,$J,false);
               $this->pdf->ln('3');
               $this->pdf->SetFont('Arial', '', 12);
-              $this->pdf->MultiCell(0,5,utf8_decode($persona->especificacion),0,$J,false);
+              $this->pdf->MultiCell(0,5,utf8_decode($persona2->especificacion),0,$J,false);
               $this->pdf->ln('10');
               //SUGERENCIA
               $this->pdf->SetFont('Arial', 'B', 12);
               $this->pdf->MultiCell(0,5,utf8_decode('SUGERENCIA:'),0,$J,false);
               $this->pdf->ln('3');
               $this->pdf->SetFont('Arial', '', 12);
-              $this->pdf->MultiCell(0,5,utf8_decode($persona->sugerencia),0,$J,false);
+              $this->pdf->MultiCell(0,5,utf8_decode($persona2->sugerencia),0,$J,false);
               $this->pdf->ln('10');
               //Firma de la psicologa
               $this->pdf->SetFont('Arial', 'B', 12);
               $this->pdf->MultiCell(0,5,utf8_decode('COLIMA, COL. A '.$persona->fecha),0,$C,false);
-              $this->pdf->Ln('30'); 
+              $this->pdf->Ln('10'); 
               //linea para firma
               $this->pdf->SetFont('Arial', 'B', 10);
               $this->pdf->MultiCell(0,5,'_________________________________________               _______________________________________',0,$J,false);
@@ -184,6 +189,8 @@ class pdfEstBenefiController extends CI_Controller {
               $this->pdf->MultiCell(0,5,'      ENC. DEL DESPACHO DE LA DIRECCION',0,$J,false);
               $this->pdf->Cell(30);
               $this->pdf->Ln('10');
+              }
+              
               
               // $intro=utf8_decode('Con fecha ' . $persona->fecha . ' y se anexa sultados de Estambul.');
               // $this->pdf->MultiCell(170,5,$intro,0,$C,false);

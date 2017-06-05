@@ -75,6 +75,32 @@ class m_pdf extends CI_Model {
         return $entrevista->result();
        
     }
+    function pdfentrevista2(){
+      $this->load->database();
+      $this->db->from('entrevistapsico2');
+      $this->db->select_max('identrevista2');
+          
+      $id= $this->db->get();
+      //$this->db->get($id);
+      //convierto el dato 
+      $ult= $id->row();
+      //sacando el dato de la columna
+      $ultimo = $ult->identrevista2;
+      //$idI=$ult->idInterno;
+      //echo($idI);
+      //print_r($id->result());
+      //die();
+
+       $this->db->where('identrevista2 =',$ultimo); 
+       //$this->db->select('idInterno');  
+      //$this->db->select('*');
+      //$personalidad =$this->db->get("estudioinicialpersonalidad");
+      $entrevista2 =$this->db->get("entrevistapsico2");
+      $entre=$entrevista2->row();
+      
+        return $entrevista2->result();
+       
+    }
     function pdfestudipsico(){
       $this->load->database();
       $this->db->from('estupsicologico');
@@ -96,6 +122,28 @@ class m_pdf extends CI_Model {
       //print_r($personalidad);
       //die();
         return $personalidad->result();
+    }
+    function pdfestudipsico2(){
+      $this->load->database();
+      $this->db->from('estupsicologico2');
+      $this->db->select_max('idestupsicologico2');      
+      $id= $this->db->get();
+      //$this->db->get($id);
+      //convierto el dato 
+      $ult= $id->row();
+      //sacando el dato de la columna
+      $ultimo = $ult->idestupsicologico2;
+      //echo($ultimo);
+      //print_r($id->result());
+      //die();
+      $this->db->where('idestupsicologico2 =',$ultimo); 
+      //$this->db->select('*');
+      //$personalidad =$this->db->get("estudioinicialpersonalidad");
+      $personalidad2 =$this->db->get("estupsicologico2");
+        //$alumnos = $this->db->get('tblalumno');
+      //print_r($personalidad);
+      //die();
+        return $personalidad2->result();
     }
     function pdfestubeneficio(){
       $this->load->database();
@@ -119,6 +167,29 @@ class m_pdf extends CI_Model {
       //die();
         return $personalidad->result();
     }
+    function pdfestubeneficio2(){
+      $this->load->database();
+      $this->db->from('estudiobeneficio2');
+      $this->db->select_max('idestudiobeneficio2');      
+      $id= $this->db->get();
+      //$this->db->get($id);
+      //convierto el dato 
+      $ult= $id->row();
+      //sacando el dato de la columna
+      $ultimo = $ult->idestudiobeneficio2;
+      //echo($ultimo);
+      //print_r($id->result());
+      //die();
+      $this->db->where('idestudiobeneficio2 =',$ultimo); 
+      //$this->db->select('*');
+      //$personalidad =$this->db->get("estudioinicialpersonalidad");
+      $personalidad =$this->db->get("estudiobeneficio2");
+        //$alumnos = $this->db->get('tblalumno');
+      //print_r($personalidad);
+      //die();
+        return $personalidad->result();
+    }
+
     function pdfformactivity(){
       $this->load->database();
       $this->db->from('actividades');
@@ -136,6 +207,28 @@ class m_pdf extends CI_Model {
       //$this->db->select('*');
       //$personalidad =$this->db->get("estudioinicialpersonalidad");
       $personalidad =$this->db->get("actividades");
+        //$alumnos = $this->db->get('tblalumno');
+      //print_r($personalidad);
+      //die();
+        return $personalidad->result();
+    }
+    function pdfestuclinico(){
+      $this->load->database();
+      $this->db->from('estuclinicocriminologico');
+      $this->db->select_max('idcriminologico');      
+      $id= $this->db->get();
+      //$this->db->get($id);
+      //convierto el dato 
+      $ult= $id->row();
+      //sacando el dato de la columna
+      $ultimo = $ult->idcriminologico;
+      //echo($ultimo);
+      //print_r($id->result());
+      //die();
+      $this->db->where('idcriminologico =',$ultimo); 
+      //$this->db->select('*');
+      //$personalidad =$this->db->get("estudioinicialpersonalidad");
+      $personalidad =$this->db->get("estuclinicocriminologico");
         //$alumnos = $this->db->get('tblalumno');
       //print_r($personalidad);
       //die();

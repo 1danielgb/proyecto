@@ -70,37 +70,34 @@ class pdfController extends CI_Controller {
       $this->pdf->SetFont('Arial', 'B', 12);
       $this->pdf->Ln('20');
       //Fin del nombre 
-      
+      $this->pdf->SetLeftMargin(18);
+      $this->pdf->SetRightMargin(15);
       //Antecedentes Familiares y Personales
       $this->pdf->SetFont('Arial', 'B', 10);
-      $this->pdf->Cell(90,10,'ANTECEDENTES FAMILIARES Y PERSONALES',0,0,'C');
-      $this->pdf->Cell(30);
-      $this->pdf->Ln('10');
+      $this->pdf->MultiCell(0,5,'ANTECEDENTES FAMILIARES Y PERSONALES',0,$J,false);
+      $this->pdf->Ln('5');
 
       //$this->pdf->SetFillColor(200,200,200);
-      $this->pdf->SetLeftMargin(13);
       $this->pdf->SetFont('Arial', '', 12);
-      $this->pdf->MultiCell(170,5,$persona->antecedentesFamiyPers,0,$J,FALSE);
-      $this->pdf->Ln('5');
+      $this->pdf->MultiCell(0,5,utf8_decode($persona->antecedentesFamiyPers),0,$J,FALSE);
+      $this->pdf->Ln('10');
 
       //Examen Mental
       $this->pdf->SetFont('Arial', 'B', 10);
-      $this->pdf->Cell(33,10,'EXAMEN MENTAL',0,0,'C');
-      $this->pdf->Cell(30);
-      $this->pdf->Ln('10');
+      $this->pdf->MultiCell(0,5,'EXAMEN MENTAL',0,$J,false);
+      $this->pdf->Ln('5');
 
       //$this->pdf->SetFillColor(200,200,200);
       // variable para mostrar acentos 
       $texto=utf8_decode($persona->examenMent);
       $this->pdf->SetFont('Arial', '', 12);
-      $this->pdf->MultiCell(180,5,$texto,0,$J,FALSE);
+      $this->pdf->MultiCell(0,5,$texto,0,$J,FALSE);
       $this->pdf->Ln('10');
 
       //Indice de lesión Organica
       $this->pdf->SetFont('Arial', 'B', 10);
-      $this->pdf->Cell(55,10,'INDICE DE LESION ORGANICA',0,0,'C');
-      $this->pdf->Cell(30);
-      $this->pdf->Ln('10');
+      $this->pdf->MultiCell(0,5,utf8_decode('ÍNDICE DE LESIÓN ORGÁNICA'),0,$J,false);
+      $this->pdf->Ln('5');
 
       //$this->pdf->SetFillColor(200,200,200);
       //$this->aligns=$J
@@ -108,15 +105,14 @@ class pdfController extends CI_Controller {
       //$pdf->SetFont('Arial');
       //$pdf->WriteHTML('You can<br><p align="center">center a line</p>and add a horizontal rule:<br><hr>');
       $this->pdf->SetFont('Arial', '', 12);
-      $A=isset($this->aligns[100]) ? $this->aligns[100] : 'J';
-      $this->pdf->MultiCell(200,5,$persona->indiceLesOrga,0,$A,FALSE);
+      $this->pdf->MultiCell(0,5,utf8_decode($persona->indiceLesOrga),0,$J,FALSE);
       $this->pdf->Ln('10');
-
+       $this->pdf->SetLeftMargin(18);
+      $this->pdf->SetRightMargin(15);
        //Nivel intelectual
       $this->pdf->SetFont('Arial', 'B', 10);
-      $this->pdf->Cell(38,10,'NIVEL INTELECTUAL',0,0,'C');
-      $this->pdf->Cell(30);
-      $this->pdf->Ln('10');
+      $this->pdf->MultiCell(0,5,'NIVEL INTELECTUAL',0,$J,false);
+      $this->pdf->Ln('5');
 
       //$this->pdf->SetFillColor(200,200,200);
       //$this->aligns=$J
@@ -124,15 +120,13 @@ class pdfController extends CI_Controller {
       //$pdf->SetFont('Arial');
       //$pdf->WriteHTML('You can<br><p align="center">center a line</p>and add a horizontal rule:<br><hr>');
       $this->pdf->SetFont('Arial', '', 12);
-      $A=isset($this->aligns[100]) ? $this->aligns[100] : 'J';
-      $this->pdf->MultiCell(200,5,$persona->nivelIntelec,0,$A,FALSE);
-      $this->pdf->Ln('20');
+      $this->pdf->MultiCell(0,5,utf8_decode($persona->nivelIntelec),0,$J,FALSE);
+      $this->pdf->Ln('10');
 
        //Dinamica de personalidad
       $this->pdf->SetFont('Arial', 'B', 10);
-      $this->pdf->Cell(55,10,'DINAMICA DE PERSONALIDAD',0,0,'C');
-      $this->pdf->Cell(30);
-      $this->pdf->Ln('10');
+      $this->pdf->MultiCell(0,5,utf8_decode('DINÁMICA DE PERSONALIDAD'),0,$J,FALSE);
+      $this->pdf->Ln('5');
 
       //$this->pdf->SetFillColor(200,200,200);
       //$this->aligns=$J
@@ -140,15 +134,13 @@ class pdfController extends CI_Controller {
       //$pdf->SetFont('Arial');
       //$pdf->WriteHTML('You can<br><p align="center">center a line</p>and add a horizontal rule:<br><hr>');
       $this->pdf->SetFont('Arial', '', 12);
-      $A=isset($this->aligns[100]) ? $this->aligns[100] : 'J';
-      $this->pdf->MultiCell(200,5,$persona->dinamicaPers,0,$A,FALSE);
+      $this->pdf->MultiCell(0,5,utf8_decode($persona->dinamicaPers),0,$J,FALSE);
       $this->pdf->Ln('10');
 
        //IMPRESION DIAGNOSTICA
       $this->pdf->SetFont('Arial', 'B', 10);
-      $this->pdf->Cell(48,10,'IMPRESION DIAGNOSTICA',0,0,'C');
-      $this->pdf->Cell(30);
-      $this->pdf->Ln('10');
+      $this->pdf->MultiCell(0,5,utf8_decode('IMPRESIÓN DIAGNÓSTICA'),0,$J,false);
+      $this->pdf->Ln('5');
 
       //$this->pdf->SetFillColor(200,200,200);
       //$this->aligns=$J
@@ -156,15 +148,13 @@ class pdfController extends CI_Controller {
       //$pdf->SetFont('Arial');
       //$pdf->WriteHTML('You can<br><p align="center">center a line</p>and add a horizontal rule:<br><hr>');
       $this->pdf->SetFont('Arial', '', 12);
-      $A=isset($this->aligns[100]) ? $this->aligns[100] : 'J';
-      $this->pdf->MultiCell(200,5,$persona->impresionDiagn,0,$A,FALSE);
+      $this->pdf->MultiCell(0,5,utf8_decode($persona->impresionDiagn),0,$J,FALSE);
       $this->pdf->Ln('10');
 
       //SALUDO
       $this->pdf->SetFont('Arial', '', 12);
-      $A=isset($this->aligns[100]) ? $this->aligns[100] : 'J';
-      $this->pdf->MultiCell(200,5,'Sin otro asunto particular por el momento, quedo a sus ordenes y reciba un cordial saludo.',0,$A,FALSE);
-      $this->pdf->Ln('20');
+      $this->pdf->MultiCell(200,5,'Sin otro asunto particular por el momento, quedo a sus ordenes y reciba un cordial saludo.',0,$J,FALSE);
+      $this->pdf->Ln('10');
 
       //Firma
       $this->pdf->SetFont('Arial', 'B', 10);
@@ -173,12 +163,12 @@ class pdfController extends CI_Controller {
       $this->pdf->Ln('5');
       //Fecha
       $this->pdf->SetFont('Arial', 'B', 10);
-      $this->pdf->Cell(190,10,'Colima, Col. a '. $persona->fecha,0,0,'C');
+      $this->pdf->Cell(190,10,'Colima, Col. a '. utf8_decode($persona->fecha),0,0,'C');
       $this->pdf->Cell(30);
       $this->pdf->Ln('5');
       //Departamento
       $this->pdf->SetFont('Arial', 'B', 10);
-      $this->pdf->Cell(190,10,'Departamento de Psicologia',0,0,'C');
+      $this->pdf->Cell(190,10,utf8_decode('Departamento de Psicología'),0,0,'C');
       $this->pdf->Cell(30);
       $this->pdf->Ln('10');
       //linea para firma
@@ -193,9 +183,9 @@ class pdfController extends CI_Controller {
       $this->pdf->Ln('5');
       //Cordinacion
       $this->pdf->SetFont('Arial', 'B', 10);
-      $this->pdf->Cell(190,10,'CORDINACION DEL AREA DE PSICOLOGIA',0,0,'C');
+      $this->pdf->Cell(190,10,utf8_decode('CORDINACION DEL AREA DE PSICOLOGíA'),0,0,'C');
       $this->pdf->Cell(30);
-      $this->pdf->Ln('10');
+      $this->pdf->Ln('5');
 
     //}
     

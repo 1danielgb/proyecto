@@ -299,7 +299,9 @@ class consulController extends CI_Controller
         $diagnostico=$this->input->post('diagnostico');
 
         // $vertur,$reexpertor,$inviemo,$hiperex,$sintdepre,$disaut,$disodesp,$quejaspsi,$psicosis,$deteneupsi,$diagnostico
-        //echo $antecentes;
+        //echo $vertur;
+        // echo'</br>';
+        // echo $disaut;
         //die();
         //cargando el modelo
         $this->load->model('m_formato');
@@ -456,6 +458,38 @@ class consulController extends CI_Controller
         //cargando la vista.
         $this->load->view('admin/adminformestuclinico', $datos);
     }
+    public function estuclinipost(){
+        $fecha= $this->input->post('fecha');
+        $ubicacion=$this->input->post('ubicacion');
+        $nombreInterno=$this->input->post('nombre');
+        $descripcionInicial=$this->input->post('descripcionInicial');
+        $antFP= $this->input->post('antFP');
+        $versiondeldelito= $this->input->post('versiondeldelito');
+        $examenmental= $this->input->post('examenmental');
+        $pruebasaplicadas= $this->input->post('pruebasaplicadas');
+        $indiceLO= $this->input->post('indiceLO');
+        $Nvlintelectual= $this->input->post('Nvlintelectual');
+        $factPsicoDelito= $this->input->post('facPsicoDelito');
+        $dinamicaResp= $this->input->post('dinamicaResp');
+        $impreDiagnostica= $this->input->post('impreDiagnostica');
+
+
+         //cargando el modelo
+        $this->load->model('m_formato');
+        //mandando los datos al modelo
+        $fila = $this->m_formato->postestuclinico($fecha,$ubicacion,$nombreInterno,$descripcionInicial,$antFP,$versiondeldelito,
+                                                $examenmental,$pruebasaplicadas,$indiceLO,$Nvlintelectual,$factPsicoDelito,
+                                                $dinamicaResp,$impreDiagnostica);
+        //$nom2 =$fila->descripEstuPsic;
+        //header("Location:" . base_url() . "PdfEstuClini");
+        if($fila!=false){
+                //echo "Datos almacenados";
+                header("Location:" . base_url() . "PdfEstuClini");
+                //header("Location:" . base_url() . "EntrePsico");
+        }else{
+                echo "no puedes dar de alta";
+            }
+    }
 
     public function registrar(){
 	    	if ($this->session->userdata('id')==1){
@@ -482,6 +516,251 @@ class consulController extends CI_Controller
 
     	}
     	
+    }
+    public function buscar(){
+            $buscar= $this->input->post('nombre');
+            $formato=$this->input->post('formato');
+            //echo $formato;
+            //echo "</br>";
+            //echo $buscar;
+            //die();
+            $nombre=$buscar.'.pdf';
+            //echo $buscar;
+            ///die();
+
+            if ($formato =='Estudio inicial de personalidad') {
+                $pdf= 'C:/xampp/htdocs/cereso/Formatos/estudioinicialdepersonalidad/'.utf8_decode($buscar).'.pdf';
+                //header('Content-type:application/pdf');
+                //header('Content-Disposition:attachment; filename="'.$nombre.'"');
+                //readfile($pdf);
+                if (file_exists($pdf)) {
+                    header ("Expires: Thu, 27 Mar 1980 23:59:00 GMT"); //la pagina expira en una fecha pasada
+                    header ("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT"); //ultima actualizacion ahora cuando la cargamos
+                    header ("Cache-Control: no-cache, must-revalidate"); //no guardar en CACHE
+                    header ("Pragma: no-cache");
+                    header ("Content-type: application/pdf");
+                    header ("Content-Disposition: inline ; filename=".basename($nombre));
+                    ob_clean();
+                    flush();
+                    readfile($pdf);
+                    exit;
+                }else{
+                    ?>
+                     <p style='font-family: georgia; text-align: center; color: #CC0000; font-weight: bold; font-size: 22pt; padding-top: 120pt;'>Archivo inexistente</p>
+                    <?php
+                }
+            }
+            if ($formato=='Entrevista Psicológica') {
+                $pdf= 'C:/xampp/htdocs/cereso/Formatos/entrevistapsicologica/'.utf8_decode($buscar).'.pdf';
+                //header('Content-type:application/pdf');
+                //header('Content-Disposition:attachment; filename="'.$nombre.'"');
+                //readfile($pdf);
+                if (file_exists($pdf)) {
+                    header ("Expires: Thu, 27 Mar 1980 23:59:00 GMT"); //la pagina expira en una fecha pasada
+                    header ("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT"); //ultima actualizacion ahora cuando la cargamos
+                    header ("Cache-Control: no-cache, must-revalidate"); //no guardar en CACHE
+                    header ("Pragma: no-cache");
+                    header ("Content-type: application/pdf");
+                    header ("Content-Disposition: inline ; filename=".basename($nombre));
+                    ob_clean();
+                    flush();
+                    readfile($pdf);
+                    exit;
+                }else{
+                      ?>
+                        <p style='font-family: georgia; text-align: center; color: #CC0000; font-weight: bold; font-size: 22pt; padding-top: 120pt;'>Archivo inexistente</p>
+                      <?php
+                     }
+            }
+
+            if ($formato=='Estudio Psicológico') {
+                $pdf= 'C:/xampp/htdocs/cereso/Formatos/estudiopsicologico/'.utf8_decode($buscar).'.pdf';
+                //header('Content-type:application/pdf');
+                //header('Content-Disposition:attachment; filename="'.$nombre.'"');
+                //readfile($pdf);
+                if (file_exists($pdf)) {
+                    header ("Expires: Thu, 27 Mar 1980 23:59:00 GMT"); //la pagina expira en una fecha pasada
+                    header ("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT"); //ultima actualizacion ahora cuando la cargamos
+                    header ("Cache-Control: no-cache, must-revalidate"); //no guardar en CACHE
+                    header ("Pragma: no-cache");
+                    header ("Content-type: application/pdf");
+                    header ("Content-Disposition: inline ; filename=".basename($nombre));
+                    ob_clean();
+                    flush();
+                    readfile($pdf);
+                    exit;
+                }else{
+                      ?>
+                        <p style='font-family: georgia; text-align: center; color: #CC0000; font-weight: bold; font-size: 22pt; padding-top: 120pt;'>Archivo inexistente</p>
+                      <?php
+                     }
+            }
+
+            if ($formato=='Estudio para beneficio') {
+                $pdf= 'C:/xampp/htdocs/cereso/Formatos/estudioparabeneficio/'.utf8_decode($buscar).'.pdf';
+                //header('Content-type:application/pdf');
+                //header('Content-Disposition:attachment; filename="'.$nombre.'"');
+                //readfile($pdf);
+                if (file_exists($pdf)) {
+                    header ("Expires: Thu, 27 Mar 1980 23:59:00 GMT"); //la pagina expira en una fecha pasada
+                    header ("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT"); //ultima actualizacion ahora cuando la cargamos
+                    header ("Cache-Control: no-cache, must-revalidate"); //no guardar en CACHE
+                    header ("Pragma: no-cache");
+                    header ("Content-type: application/pdf");
+                    header ("Content-Disposition: inline ; filename=".basename($nombre));
+                    ob_clean();
+                    flush();
+                    readfile($pdf);
+                    exit;
+                }else{
+                      ?>
+                        <p style='font-family: georgia; text-align: center; color: #CC0000; font-weight: bold; font-size: 22pt; padding-top: 120pt;'>Archivo inexistente</p>
+                      <?php
+                     }
+            }
+
+            if ($formato=='Formato de actividades') {
+                $pdf= 'C:/xampp/htdocs/cereso/Formatos/formatodeactividades/'.utf8_decode($buscar).'.pdf';
+                //header('Content-type:application/pdf');
+                //header('Content-Disposition:attachment; filename="'.$nombre.'"');
+                //readfile($pdf);
+                if (file_exists($pdf)) {
+                    header ("Expires: Thu, 27 Mar 1980 23:59:00 GMT"); //la pagina expira en una fecha pasada
+                    header ("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT"); //ultima actualizacion ahora cuando la cargamos
+                    header ("Cache-Control: no-cache, must-revalidate"); //no guardar en CACHE
+                    header ("Pragma: no-cache");
+                    header ("Content-type: application/pdf");
+                    header ("Content-Disposition: inline ; filename=".basename($nombre));
+                    ob_clean();
+                    flush();
+                    readfile($pdf);
+                    exit;
+                }else{
+                      ?>
+                        <p style='font-family: georgia; text-align: center; color: #CC0000; font-weight: bold; font-size: 22pt; padding-top: 120pt;'>Archivo inexistente</p>
+                      <?php
+                     }
+            }
+            if ($formato=='Estudio clínico-criminológico') {
+                $pdf= 'C:/xampp/htdocs/cereso/Formatos/estudioclinicocriminologico/'.utf8_decode($buscar).'.pdf';
+                //header('Content-type:application/pdf');
+                //header('Content-Disposition:attachment; filename="'.$nombre.'"');
+                //readfile($pdf);
+                if (file_exists($pdf)) {
+                    header ("Expires: Thu, 27 Mar 1980 23:59:00 GMT"); //la pagina expira en una fecha pasada
+                    header ("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT"); //ultima actualizacion ahora cuando la cargamos
+                    header ("Cache-Control: no-cache, must-revalidate"); //no guardar en CACHE
+                    header ("Pragma: no-cache");
+                    header ("Content-type: application/pdf");
+                    header ("Content-Disposition: inline ; filename=".basename($nombre));
+                    ob_clean();
+                    flush();
+                    readfile($pdf);
+                    exit;
+                }else{
+                      ?>
+                        <p style='font-family: georgia; text-align: center; color: #CC0000; font-weight: bold; font-size: 22pt; padding-top: 120pt;'>Archivo inexistente</p>
+                      <?php
+                     }
+            }
+
+    }
+    public function buscar2(){
+            $buscar= $this->input->post('buscar');
+            $nombre=$buscar.'.pdf';
+            //echo $buscar;
+            ///die();
+            
+                
+    }
+     public function buscar3(){
+            $buscar= $this->input->post('buscar');
+            $nombre=$buscar.'.pdf';
+            //echo $buscar;
+            ///die();
+            
+                
+    }
+    public function buscar4(){
+            $buscar= $this->input->post('buscar');
+            $nombre=$buscar.'.pdf';
+            //echo $buscar;
+            ///die();
+            $pdf= 'C:/xampp/htdocs/cereso/Formatos/estudioparabeneficio/'.utf8_decode($buscar).'.pdf';
+            //header('Content-type:application/pdf');
+            //header('Content-Disposition:attachment; filename="'.$nombre.'"');
+            //readfile($pdf);
+            if (file_exists($pdf)) {
+                header ("Expires: Thu, 27 Mar 1980 23:59:00 GMT"); //la pagina expira en una fecha pasada
+                header ("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT"); //ultima actualizacion ahora cuando la cargamos
+                header ("Cache-Control: no-cache, must-revalidate"); //no guardar en CACHE
+                header ("Pragma: no-cache");
+                header ("Content-type: application/pdf");
+                header ("Content-Disposition: inline ; filename=".basename($nombre));
+                ob_clean();
+                flush();
+                readfile($pdf);
+                exit;
+            }else{
+                ?>
+                 <p style='font-family: georgia; text-align: center; color: #CC0000; font-weight: bold; font-size: 22pt; padding-top: 120pt;'>Archivo inexistente</p>
+                <?php
+            }
+                
+    }
+     public function buscar5(){
+            $buscar= $this->input->post('buscar');
+            $nombre=$buscar.'.pdf';
+            //echo $buscar;
+            ///die();
+            $pdf= 'C:/xampp/htdocs/cereso/Formatos/formatodeactividades/'.utf8_decode($buscar).'.pdf';
+            //header('Content-type:application/pdf');
+            //header('Content-Disposition:attachment; filename="'.$nombre.'"');
+            //readfile($pdf);
+            if (file_exists($pdf)) {
+                header ("Expires: Thu, 27 Mar 1980 23:59:00 GMT"); //la pagina expira en una fecha pasada
+                header ("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT"); //ultima actualizacion ahora cuando la cargamos
+                header ("Cache-Control: no-cache, must-revalidate"); //no guardar en CACHE
+                header ("Pragma: no-cache");
+                header ("Content-type: application/pdf");
+                header ("Content-Disposition: inline ; filename=".basename($nombre));
+                ob_clean();
+                flush();
+                readfile($pdf);
+                exit;
+            }else{
+                ?>
+                 <p style='font-family: georgia; text-align: center; color: #CC0000; font-weight: bold; font-size: 22pt; padding-top: 120pt;'>Archivo inexistente</p>
+                <?php
+            }
+                
+    }
+     public function buscar6(){
+            $buscar= $this->input->post('buscar');
+            $nombre=$buscar.'.pdf';
+            //echo $buscar;
+            ///die();
+            $pdf= 'C:/xampp/htdocs/cereso/Formatos/estudioclinicocriminologico/'.utf8_decode($buscar).'.pdf';
+            //header('Content-type:application/pdf');
+            //header('Content-Disposition:attachment; filename="'.$nombre.'"');
+            //readfile($pdf);
+            if (file_exists($pdf)) {
+                header ("Expires: Thu, 27 Mar 1980 23:59:00 GMT"); //la pagina expira en una fecha pasada
+                header ("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT"); //ultima actualizacion ahora cuando la cargamos
+                header ("Cache-Control: no-cache, must-revalidate"); //no guardar en CACHE
+                header ("Pragma: no-cache");
+                header ("Content-type: application/pdf");
+                header ("Content-Disposition: inline ; filename=".basename($nombre));
+                ob_clean();
+                flush();
+                readfile($pdf);
+                exit;
+            }else{
+                ?>
+                 <p style='font-family: georgia; text-align: center; color: #CC0000; font-weight: bold; font-size: 22pt; padding-top: 120pt;'>Archivo inexistente</p>
+                <?php
+            }
+                
     }
     public function registrarIntern(){
     	

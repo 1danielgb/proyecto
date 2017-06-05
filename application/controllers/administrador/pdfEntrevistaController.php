@@ -15,6 +15,7 @@ class pdfEntrevistaController extends CI_Controller {
     //die();
     // Se obtienen los datos de la base de datos
     $entrevista = $this->m_pdf->pdfentrevista();
+    $entrevista2 = $this->m_pdf->pdfentrevista2();
  
     // Creacion del PDF
 
@@ -76,113 +77,53 @@ class pdfEntrevistaController extends CI_Controller {
        $this->pdf->SetFont('Arial', 'B', 10);
        $this->pdf->Cell(60,10,'1.- FICHA DE IDENTIFICACION',0,0,'C');
        $this->pdf->Cell(30);
-       $this->pdf->Ln('5');
-      //Inicio con noombre 
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(63,10,'NOMBRE:  '. utf8_decode($entrevista->nombreint),0,0,'C');
-       $this->pdf->Cell(30);
-      //Edad 
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(70,10,'EDAD:  '. $entrevista->edad,0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('5');
-       //Fecha de nacimiento 
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(82,10,'FECHA DE NACIMIENTO:  '. $entrevista->fechanacimi,0,0,'C');
-       $this->pdf->Cell(30);
-       //Lugar de nacimiento  
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(65,10,'LUGAR DE NAC.  '. utf8_decode($entrevista->lugarNaci),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('5');
-       //Recidencia 
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(84,10,'RECIDENCIA:  '. utf8_decode($entrevista->residencia),0,0,'C');
-       $this->pdf->Cell(30);
-      //Domicilio 
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(58,10,'DOMICILIO:  '. utf8_decode($entrevista->domicilio),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('5');
-       //Ocupacion 
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(61,10,'OCUPACION:  '. utf8_decode($entrevista->ocupacion),0,0,'C');
-       $this->pdf->Cell(30);
-      //Escolaridad 
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(107,10,'ESCOLARIDAD:  '. utf8_decode($entrevista->escolaridad),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('5');
-       //Estado civil 
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(59,10,'ESTADO CIVIL:  '. utf8_decode($entrevista->estadocivil),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('5');
-       //Delito 
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(106,10,'DELITO:  '.utf8_decode( $entrevista->delitos),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('5');
+       $this->pdf->Ln('7');
+      //Inicio con noombre y edad
+       $this->pdf->SetLeftMargin(18);
+       $this->pdf->SetRightMargin(15);
+       $this->pdf->SetFont('Arial', '', 10);
+       $this->pdf->MultiCell(0,5,'NOMBRE:  '. utf8_decode($entrevista->nombreint).'                              EDAD:  '. $entrevista->edad,0,$J,false);
+       $this->pdf->Ln('1');
+       //Fecha de nacimiento y Lugar de nacimiento 
+       $this->pdf->SetFont('Arial', '', 10);
+       $this->pdf->MultiCell(0,5,'FECHA DE NACIMIENTO:  '. $entrevista->fechanacimi.'                              LUGAR DE NAC.  '. utf8_decode($entrevista->lugarNaci),0,$J,false);
+       $this->pdf->Ln('1');
+       //Recidencia y Domicilio 
+       $this->pdf->SetFont('Arial', '', 10);
+       $this->pdf->MultiCell(0,5,'RECIDENCIA:  '. utf8_decode($entrevista->residencia).'                                                            DOMICILIO:  '. utf8_decode($entrevista->domicilio),0,$J,false);
+       $this->pdf->Ln('1');
+       //Ocupacion and Escolaridad
+       $this->pdf->SetFont('Arial', '', 10);
+       $this->pdf->MultiCell(0,5,'OCUPACION:  '. utf8_decode($entrevista->ocupacion).'                                                   ESCOLARIDAD:  '. utf8_decode($entrevista->escolaridad),0,$J,false);
+       $this->pdf->Ln('1');
+       //Estado civil and Delito 
+       $this->pdf->SetFont('Arial', '', 10);
+       $this->pdf->MultiCell(0,5,'ESTADO CIVIL:  '. utf8_decode($entrevista->estadocivil).'                                                     DELITO:  '.utf8_decode( $entrevista->delitos),0,$J,false);
+       $this->pdf->Ln('2');
        //Motivo de la consulta 
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(108,10,'MOTIVO DE LA CONSULTA:  '. utf8_decode($entrevista->mtvconsulta),0,0,'C');
+       $this->pdf->SetFont('Arial', '', 10);
+       $this->pdf->MultiCell(0,5,'MOTIVO DE LA CONSULTA:  '. utf8_decode($entrevista->mtvconsulta),0,$J,false);
        $this->pdf->Cell(30);
-       $this->pdf->Ln('10');
+       $this->pdf->Ln('5');
       //Datos familiares
        $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(50,10,'2.- DATOS FAMILIARES.',0,0,'C');
-       $this->pdf->Cell(30);
+       $this->pdf->Cell(-5);
+       $this->pdf->Cell(50,5,'2.- DATOS FAMILIARES.',0,$J,false);
        $this->pdf->Ln('5');
       //Encabezado familia
        $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(70,10,'NOMBRE',0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(-40,10,'ESCOLARIDAD',0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(75,10,'OCUPACION',0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(-55,10,'EDAD',0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('5');
+       $this->pdf->MultiCell(0,5,'                            NOMBRE'.'                         ESCOLARIDAD'.'                         OCUPACION'.'                       EDAD',0,$J,false);
+       $this->pdf->Ln('2');
       //Encabezado filas familia
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(23,10,'PADRE:',0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(-34,10,' '. utf8_decode($entrevista->nomPadre),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(60,10,' '. utf8_decode($entrevista->escoPadre),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(-22,10,' '. utf8_decode($entrevista->ocupPadre),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(40,10,' '. utf8_decode($entrevista->edadPadre),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('5');
+       $this->pdf->SetFont('Arial', '', 10);
+       $this->pdf->MultiCell(0,5,'    PADRE:           '.utf8_decode($entrevista->nomPadre)."                              ".utf8_decode($entrevista->escoPadre)."                                      ".utf8_decode($entrevista->ocupPadre)."                           ".utf8_decode($entrevista->edadPadre),0,$J,false);
+       $this->pdf->Ln('2');
        //LINEA MADRE
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(23,10,'MADRE:',0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(-34,10,' '. utf8_decode($entrevista->nomMadre),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(60,10,' '. utf8_decode($entrevista->escoMadre),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(-22,10,' '. utf8_decode($entrevista->ocupMadre),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(40,10,' '. utf8_decode($entrevista->edadMadre),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('5');
+       $this->pdf->SetFont('Arial', '', 10);
+       $this->pdf->MultiCell(0,5,'    MADRE:          '.utf8_decode($entrevista->nomMadre)."                              ".utf8_decode($entrevista->escoMadre)."                                ".utf8_decode($entrevista->ocupMadre)."                        ".utf8_decode($entrevista->edadMadre),0,$J,false);
+       $this->pdf->Ln('1');
        //Linea hermanos
-       $this->pdf->SetFont('Arial', 'B', 10);
+       $this->pdf->SetFont('Arial', '', 10);
        $this->pdf->Cell(20,10,'HNOS:',0,0,'C');
        $this->pdf->Cell(30);
        $this->pdf->Ln('0');
@@ -201,16 +142,16 @@ class pdfEntrevistaController extends CI_Controller {
           // se imprime el numero actual y despues se incrementa el valor de $x en uno
            //$this->pdf->Cell(15,5,$x++,'BL',0,'C',0);
            // Se imprimen los datos de cada alumno
-            $this->pdf->SetFont('Arial', 'B', 10);
+            $this->pdf->SetFont('Arial', '', 10);
             $this->pdf->Cell(73,10,' '. utf8_decode($hermano->nombre),0,0,'C');
             $this->pdf->Cell(30);
-            $this->pdf->SetFont('Arial', 'B', 10);
+            $this->pdf->SetFont('Arial', '', 10);
             $this->pdf->Cell(-48,10,' '. utf8_decode($hermano->escolaridad),0,0,'C');
             $this->pdf->Cell(30);
-            $this->pdf->SetFont('Arial', 'B', 10);
+            $this->pdf->SetFont('Arial', '', 10);
             $this->pdf->Cell(85,10,' '. utf8_decode($hermano->ocupacion),0,0,'C');
             $this->pdf->Cell(30);
-            $this->pdf->SetFont('Arial', 'B', 10);
+            $this->pdf->SetFont('Arial', '', 10);
             $this->pdf->Cell(-65,10,' '. utf8_decode($hermano->edad),0,0,'C');
             $this->pdf->Cell(30);
            // $this->pdf->Cell(25,5,$hermano->nombre,'B',0,'L',0);
@@ -228,302 +169,264 @@ class pdfEntrevistaController extends CI_Controller {
        $this->pdf->Ln('10');
        //Antecedentes del interno
        $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->SetLeftMargin(20);
-       $this->pdf->Cell(51,10,'3.- ANTECEDENTES DEL INTERNO:',0,0,'C');
+       //$this->pdf->SetLeftMargin(20);
+       $this->pdf->Cell(53,10,'3.- ANTECEDENTES DEL INTERNO:',0,0,'C');
        $this->pdf->Cell(30);
        $this->pdf->Ln('8');
-       $this->pdf->SetFont('Arial', 'B', 10);
+       $this->pdf->SetFont('Arial', '', 10);
        $this->pdf->MultiCell(0,5,' '. utf8_decode($entrevista->antInterno),0,$J,FALSE);
        //$this->pdf->Cell(30);
        $this->pdf->Ln('5');
        //Antecedentes del interno
+       $this->pdf->SetLeftMargin(18);
+       $this->pdf->SetRightMargin(15);
        $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(105,10,'4.- FACTORES QUE INTERVINIERON EN LA COMISON DEL DELITO:',0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('10');
-       $this->pdf->SetFont('Arial', 'B', 10);
+       $this->pdf->Cell(107,10,'4.- FACTORES QUE INTERVINIERON EN LA COMISON DEL DELITO:',0,0,'C');
+       $this->pdf->Ln('8');
+       $this->pdf->SetFont('Arial', '', 10);
        $this->pdf->MultiCell(0,5,utf8_decode($entrevista->factInterComDeli),0,$J,false);
-       $this->pdf->Cell(30);
        //Escolaridad
        $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(-38,10,'5.- ESCOLARIDAD',0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('10');
-       $this->pdf->SetFont('Arial', 'B', 10);
+       $this->pdf->Cell(23,10,'5.- ESCOLARIDAD',0,0,'C');
+       $this->pdf->Ln('8');
+       $this->pdf->SetFont('Arial', '', 10);
        $this->pdf->MultiCell(0,5,' '. utf8_decode($entrevista->escolaridad),0,$J,false);
-       $this->pdf->Cell(30);
        $this->pdf->Ln('5');
-       //Actividades
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(22,10,'6.- ACTIVIDADES',0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('10');
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->MultiCell(0,5,' '. utf8_decode($entrevista->actividades),0,$J,false);
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('10');
-       //Relaciones Familiares
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(44,10,'7.- RELACIONES FAMILIARES',0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('10');
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->MultiCell(0,5,' '. utf8_decode($entrevista->relaFami),0,$J,false);
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('10');
 
-       $this->pdf->SetLeftMargin(10);
+       //Foreach para la siguiente tabla de actividades :( 
+       foreach ($entrevista2 as $entrevista2) {
+           //Actividades
+         $this->pdf->SetFont('Arial', 'B', 10);
+         $this->pdf->Cell(22,10,'6.- ACTIVIDADES',0,0,'C');
+         $this->pdf->Ln('8');
+         $this->pdf->SetFont('Arial', '', 10);
+         $this->pdf->MultiCell(0,5,' '. utf8_decode($entrevista2->actividades),0,$J,false);
+         $this->pdf->Ln('5');
+         //Relaciones Familiares
+         $this->pdf->SetFont('Arial', 'B', 10);
+         $this->pdf->Cell(52,10,'7.- RELACIONES FAMILIARES',0,0,'C');
+         $this->pdf->Ln('8');
+         $this->pdf->SetFont('Arial', '', 10);
+         $this->pdf->SetLeftMargin(18);
+         $this->pdf->SetRightMargin(15);
+         $this->pdf->MultiCell(0,5,' '. utf8_decode($entrevista2->relaFami),0,$J,false);
+         $this->pdf->Ln('10');
 
-       //Examen mental
-       $this->pdf->SetFont('Arial','B',13);
-       $this->pdf->Cell(30);
-       $this->pdf->Cell(120,10,'EXAMEN MENTAL',0,0,'C');
-       $this->pdf->Ln('13');
-       //Relaciones Familiares
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(66,10,'I. APARIENCIA Y CONDUCTA',0,0,'C');
-       $this->pdf->Cell(30);
-       //Acitud de la entrevista
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(84,10,' '.'3)  Historia de conductas antisociales',0,0,'C');
-       $this->pdf->Cell(30);
-       //relacion familiar
-       $this->pdf->Ln('5');
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(112,10,' '.utf8_decode('1)  Relación entre la edad aparente y la edad real.'),0,0,'C');
-       $this->pdf->Cell(30);
-       //actitud de la entrevista interacion general con el examinador
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(-40,10,' '.utf8_decode($entrevista->condAntiSoci),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('5');
-       //respuesta de la relacion de la edad
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(70,10,' '. utf8_decode($entrevista->relacionEdad),0,0,'C');
-       $this->pdf->Cell(30);
-       //respuesta de la interacion general con el examinador
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(66,10,' '. utf8_decode('4)  Conducta antisocial habitual'),0,0,'C');
-       $this->pdf->Cell(30);
-       //vestido apariencia y conducta
-       $this->pdf->Ln('5');
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(48,10,' '.'2)  Vestido',0,0,'C');
-       $this->pdf->Cell(30);
-       //actitud de la entrevista interacion especifica 
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(120,10,' '.utf8_decode($entrevista->condAntiSociAbi),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('5');
-       //respuesta de vestido
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(59,10,' '. utf8_decode($entrevista->vestido),0,0,'C');
-       $this->pdf->Cell(30);
-       //respuesta de interacion especifica con el examinador
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(91,10,' '. utf8_decode('5)  Historial de problemas legales'),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('5');
-       // I higiene personal 
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(63,10,' '.'3)  Higiene personal',0,0,'C');
-       $this->pdf->Cell(30);
-       // III Actitud durante la entrevista
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(100,10,' '.utf8_decode($entrevista ->histLegal),0,0,'C');
-       $this->pdf->Cell(30);
-       // I respuesta Higiene 
-       $this->pdf->Ln('5');
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(59,10,' '. utf8_decode($entrevista->igienePers),0,0,'C');
-       $this->pdf->Cell(30);
-       // III la actividad motora es:
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(91,10,' '.utf8_decode('6)  Problemas legales habituales '),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('5');
-       // I apariencia total
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(62,10,' '.'4)  Apariencia total',0,0,'C');
-       $this->pdf->Cell(30);
-       //Respuesta III La actividad motora
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(100,10,' '. utf8_decode($entrevista->probLegAbit),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('5');
-       //I Respuesta apariencia total
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(59,10,' '. utf8_decode($entrevista->apareTotal),0,0,'C');
-       $this->pdf->Cell(30);
-       //III Conducta manifiesta
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(117,10,' '.utf8_decode('7)  Clasificación general de ajustes interpersonal'),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('5');
-       //I Postura
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(48,10,' '.utf8_decode('5)  Postura'),0,0,'C');
-       $this->pdf->Cell(30);
-       // III Respuesta conducta manifiesta
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(143,10,' '. utf8_decode($entrevista->clasiGenAjusteInterPerso),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('5');
-       // I Respuesta postura
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(53,10,' '. utf8_decode($entrevista->postura),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('5');
-       //I Forma de caminar
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(66,10,' '.'6)  Forma de caminar',0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('5');
-       //I Respuesta forma de caminar 
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(54,10,' '. utf8_decode($entrevista->formaCaminar),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('5');
-       // I Exprecion facila reflejado
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(79,10,' '.utf8_decode('7)  Expresión facial reflejado'),0,0,'C');
-       $this->pdf->Cell(30); 
-       $this->pdf->Ln('5');
-       // I Respuesta expresion facial reflejada
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(57,10,' '. utf8_decode($entrevista->expFacialRel),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('5');
-       // I Expresiones faciales 
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(71,10,' '.'8)  Expresiones faciales',0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('5');
-       // I Respuesta expreción facial 
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(92,10,' '. utf8_decode($entrevista->expFacial),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('5');
-       // III Actitud durante la entrevista
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(81,10,' '.'II. ACTITUD DURANTE LA ENTREVISTA',0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('5');
-       //II Actitud de la entrevista interacion general con el examinador
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(99,10,' '.utf8_decode('1)  Interación general con el examinador'),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('5');
-       //II respuesta de la interacion general con el examinador
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(59,10,' '. utf8_decode($entrevista->intGenExam),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('5');
-       //II Actitud de la entrevista interacion especifica 
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(103,10,' '.utf8_decode('2)  Interación específica con el examinador'),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('5');
-       //respuesta de interacion especifica con el examinador
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(59,10,' '. utf8_decode($entrevista->intEspExam),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('5');
-       // III Actitud durante la entrevista
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(80,10,' '.'III. ACTITUD DURANTE LA ENTREVISTA',0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('5');
-       // III Actividadmotora
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(76,10,' '.utf8_decode('1)  La actividad motora es: '),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('5');
-       //Respuesta III La actividad motora
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(61,10,' '. utf8_decode($entrevista->actiMotora),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('5');
-       //IV Pensamiento Lenguaje 
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(63,10,' '.'IV. PENSAMIENTO LENGUAJE',0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('5');
-       // IV Lenguaje
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(53,10,' '.utf8_decode('A)  Lenguaje. '),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('5');
-       //IV Tono de voz
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(56,10,' '.utf8_decode('1)  Tono de voz'),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('5');
-       // IV Respuesta Tono de voz
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(52,10,' '.utf8_decode($entrevista->tonoVoz),0,0,'C');
-       $this->pdf->Cell(30); 
-       $this->pdf->Ln('5');
-       // IV Probelmas interpersonales Ocurridos especificamente con:
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(136,10,' '. utf8_decode('2)  Problemas interpersonales ocurridos especificamente con: '),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('5');
-       // IV Respuesta problemas interpersonales
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(82,10,' '. utf8_decode($entrevista->probInterPers),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('13');
+         //$this->pdf->SetLeftMargin(10);
+         ////// Estambul del interno ///////
+          //Orientacion de la nueva página  
+          $O='P';
+          $this->pdf->AddPage($O, 0 ,0);  
+         //Examen mental
 
-       //Continuación de la entrevista
-       //Autoconcepto
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(48,10,' '. utf8_decode('9.-  AUTOCONCEPTO: '),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('10');
-       //Respuesta de autoconcepto
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->SetLeftMargin(20);
-       $this->pdf->MultiCell(0,5,' '. utf8_decode($entrevista->autoconcepto),0,$J,FALSE);
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('5');
-       //Expectativa a futuro
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(40,10,' '. utf8_decode('10.-  EXPECTATIVAS A FUTURO '),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('10');
-       $this->pdf->SetFont('Arial', 'B', 10);
-       //$this->pdf->SetLeftMargin(20);
-       $this->pdf->MultiCell(0,5,' '. utf8_decode($entrevista->espeFuturo),0,$J,FALSE);
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('5');
-       //Impresion diagnostica
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(39,10,' '. utf8_decode('11.-  IMPRESIÓN DIAGNOSTICA'),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('10');
-       //Respuesta imresión diagnostica
-       $this->pdf->SetFont('Arial', 'B', 10);
-       //$this->pdf->SetLeftMargin(20);
-       $this->pdf->MultiCell(0,5,' '. utf8_decode($entrevista->ImpDiagnostico),0,$J,FALSE);
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('10');
-       //Firma del psicologo
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(248,10,' '. utf8_decode('PSICÓLOGO: __________________________________________'),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('10');
-       //Impresion diagnostica
-       $this->pdf->SetFont('Arial', 'B', 10);
-       $this->pdf->Cell(35,10,' '. utf8_decode('OBSERVACIONES: '),0,0,'C');
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('10');
-       //OBSERVACIONES 
-       $this->pdf->SetFont('Arial', 'B', 10);
-       //$this->pdf->SetLeftMargin(20);
-       $this->pdf->MultiCell(0,5,' '. utf8_decode($entrevista->observaciones),0,$J,FALSE);
-       $this->pdf->Cell(30);
-       $this->pdf->Ln('10');
+         $this->pdf->SetFont('Arial','B',13);
+         $this->pdf->Cell(30);
+         $this->pdf->Cell(120,10,'EXAMEN MENTAL',0,0,'C');
+         $this->pdf->Ln('13');
+         //Relaciones Familiares
+         $this->pdf->SetLeftMargin(18);
+         $this->pdf->SetRightMargin(15);
+         $this->pdf->SetFont('Arial', 'B', 10);
+         $this->pdf->MultiCell(0,5,'I. APARIENCIA Y CONDUCTA',0,$J,false);
+         
+         //relacion familiar
+         $this->pdf->Ln('5');
+         $this->pdf->SetFont('Arial', 'B', 10);
+         $this->pdf->MultiCell(0,5,''.utf8_decode('1)       Relación entre la edad aparente y la edad real.'),0,$J,false);
+         
+         //respuesta de la relacion de la edad
+         $this->pdf->SetFont('Arial', '', 10);
+         $this->pdf->MultiCell(0,5,'           '. utf8_decode($entrevista2->relacionEdad),0,$J,false);
+         
+         //vestido apariencia y conducta
+         $this->pdf->Ln('2');
+         $this->pdf->SetFont('Arial', 'B', 10);
+         $this->pdf->MultiCell(0,5,''.'2)       Vestido',0,$J,false);
+        
+         //respuesta de vestido
+         $this->pdf->SetFont('Arial', '', 10);
+         $this->pdf->MultiCell(0,5,'           '. utf8_decode($entrevista2->vestido),0,$J,false);
+        
+         // I higiene personal 
+         $this->pdf->SetFont('Arial', 'B', 10);
+         $this->pdf->MultiCell(0,5,''.'3)       Higiene personal',0,$J,false);
+        
+         // I respuesta Higiene 
+         $this->pdf->SetFont('Arial', '', 10);
+         $this->pdf->MultiCell(0,5,'           '. utf8_decode($entrevista2->igienePers),0,$J,false);
+        
+         // I apariencia total
+         $this->pdf->SetFont('Arial', 'B', 10);
+         $this->pdf->MultiCell(0,5,''.'4)       Apariencia total',0,$J,false);
+        
+         //I Respuesta apariencia total
+         $this->pdf->SetFont('Arial', '', 10);
+         $this->pdf->MultiCell(0,5,'           '. utf8_decode($entrevista2->apareTotal),0,$J,false);
+         
+         //I Postura
+         $this->pdf->SetFont('Arial', 'B', 10);
+         $this->pdf->MultiCell(0,5,''.utf8_decode('5)       Postura'),0,$J,false);
+         
+         // I Respuesta postura
+         $this->pdf->SetFont('Arial', '', 10);
+         $this->pdf->MultiCell(0,5,'           '. utf8_decode($entrevista2->postura),0,$J,false);
+         //I Forma de caminar
+         $this->pdf->SetFont('Arial', 'B', 10);
+         $this->pdf->MultiCell(0,5,''.'6)       Forma de caminar',0,$J,false);
+         //I Respuesta forma de caminar 
+         $this->pdf->SetFont('Arial', '', 10);
+         $this->pdf->MultiCell(0,5,'           '. utf8_decode($entrevista2->formaCaminar),0,$J,false);
+         // I Exprecion facila reflejado
+         $this->pdf->SetFont('Arial', 'B', 10);
+         $this->pdf->MultiCell(0,5,''.utf8_decode('7)       Expresión facial reflejado'),0,$J,false);
+         // I Respuesta expresion facial reflejada
+         $this->pdf->SetFont('Arial', '', 10);
+         $this->pdf->MultiCell(0,5,'           '. utf8_decode($entrevista2->expFacialRel),0,$J,false);
+         // I Expresiones faciales 
+         $this->pdf->SetFont('Arial', 'B', 10);
+         $this->pdf->MultiCell(0,5,''.'8)       Expresiones faciales',0,$J,false);
+         // I Respuesta expreción facial 
+         $this->pdf->SetFont('Arial', '', 10);
+         $this->pdf->MultiCell(0,5,'           '. utf8_decode($entrevista2->expFacial),0,$J,false);
+          $this->pdf->Ln('5');
+         // III Actitud durante la entrevista
+         $this->pdf->SetFont('Arial', 'B', 10);
+         $this->pdf->MultiCell(0,5,''.'II. ACTITUD DURANTE LA ENTREVISTA',0,$J,false);
+         //II Actitud de la entrevista interacion general con el examinador
+         $this->pdf->SetFont('Arial', 'B', 10);
+         $this->pdf->MultiCell(0,5,''.utf8_decode('1)       Interación general con el examinador'),0,$J,false);
+         //II respuesta de la interacion general con el examinador
+         $this->pdf->SetFont('Arial', '', 10);
+         $this->pdf->MultiCell(0,5,'           '. utf8_decode($entrevista2->intGenExam),0,$J,false);
+         //II Actitud de la entrevista interacion especifica 
+         $this->pdf->SetFont('Arial', 'B', 10);
+         $this->pdf->MultiCell(0,5,''.utf8_decode('2)       Interación específica con el examinador'),0,$J,false);
+         //respuesta de interacion especifica con el examinador
+         $this->pdf->SetFont('Arial', '', 10);
+         $this->pdf->MultiCell(0,5,'           '. utf8_decode($entrevista2->intEspExam),0,$J,false);
+         $this->pdf->Ln('5');
+         // III Actitud durante la entrevista
+         $this->pdf->SetFont('Arial', 'B', 10);
+         $this->pdf->MultiCell(0,5,''.'III. ACTITUD DURANTE LA ENTREVISTA',0,$J,false);
+         // III Actividadmotora
+         $this->pdf->SetFont('Arial', 'B', 10);
+         $this->pdf->MultiCell(0,5,''.utf8_decode('1)       La actividad motora es: '),0,$J,false);
+         //Respuesta III La actividad motora
+         $this->pdf->SetFont('Arial', '', 10);
+         $this->pdf->MultiCell(0,5,'           '. utf8_decode($entrevista2->actiMotora),0,$J,false);  
+         //conducta manifiesta III 
+         $this->pdf->SetFont('Arial', 'B', 10);
+         $this->pdf->MultiCell(0,5,''.utf8_decode('2)       Conducta manifiesta. '),0,$J,false);
+         //Respuesta conducta manifiesta III
+         $this->pdf->SetFont('Arial', '', 10);
+         $this->pdf->MultiCell(0,5,'           '. utf8_decode($entrevista2->conducta),0,$J,false);  
+
+         $this->pdf->Ln('5');
+         //IV Pensamiento Lenguaje 
+         $this->pdf->SetFont('Arial', 'B', 10);
+         $this->pdf->MultiCell(0,5,''.'IV. PENSAMIENTO LENGUAJE',0,$J,false);
+         $this->pdf->SetFont('Arial', 'B', 10);
+         $this->pdf->MultiCell(0,5,''.utf8_decode('A)       Lenguaje. '),0,$J,false);
+         //IV Tono de voz
+         $this->pdf->SetFont('Arial', 'B', 10);
+         $this->pdf->MultiCell(0,5,''.utf8_decode('1)       Tono de voz'),0,$J,false);
+
+         // IV Respuesta Tono de voz
+         $this->pdf->SetFont('Arial', '', 10);
+         $this->pdf->MultiCell(0,5,'            '.utf8_decode($entrevista2->tonoVoz),0,$J,false); 
+         // IV Probelmas interpersonales Ocurridos especificamente con:
+         $this->pdf->SetFont('Arial', 'B', 10);
+         $this->pdf->MultiCell(0,5,''. utf8_decode('2)       Problemas interpersonales ocurridos especificamente con: '),0,$J,false);
+         // IV Respuesta problemas interpersonales
+         $this->pdf->SetFont('Arial', '', 10);
+         $this->pdf->MultiCell(0,5,'            '. utf8_decode($entrevista2->probInterPers),0,$J,false);
+         //problemas interpersonales
+         $this->pdf->SetFont('Arial', 'B', 10);
+         $this->pdf->MultiCell(0,5,''.'3)       Historia de conductas antisociales',0,$J,false);
+         //problemas interpesonales
+         $this->pdf->SetFont('Arial', '', 10);
+         $this->pdf->MultiCell(0,5,'             '.utf8_decode($entrevista2->condAntiSoci),0,$J,false);
+         //rconducta antisocial
+         $this->pdf->SetFont('Arial', 'B', 10);
+         $this->pdf->MultiCell(0,5,''. utf8_decode('4)       Conducta antisocial habitual'),0,$J,false);
+         //respuesta conducta antisocial
+         $this->pdf->SetFont('Arial', '', 10);
+         $this->pdf->MultiCell(0,5,'             '.utf8_decode($entrevista2->condAntiSociAbi),0,$J,false);
+         //historial de problemas legales 
+         $this->pdf->SetFont('Arial', 'B', 10);
+         $this->pdf->MultiCell(0,5,''. utf8_decode('5)       Historial de problemas legales'),0,$J,false);
+         // respuesta historial de problemas legales
+         $this->pdf->SetFont('Arial', '', 10);
+         $this->pdf->MultiCell(0,5,'         '.utf8_decode($entrevista2 ->histLegal),0,$J,false);
+         // Problemas legales habituales
+         $this->pdf->SetLeftMargin(18);
+         $this->pdf->SetRightMargin(15);
+         $this->pdf->SetFont('Arial', 'B', 10);
+         $this->pdf->MultiCell(0,5,''.utf8_decode('6)        Problemas legales habituales '),0,$J,false);
+         //Respuesta Problemas legales habituales
+         $this->pdf->SetFont('Arial', '', 10);
+         $this->pdf->MultiCell(0,5,'         '. utf8_decode($entrevista2->probLegAbit),0,$J,false);
+         //Clasificación general de ajustes interpersonal
+         $this->pdf->SetLeftMargin(18);
+         $this->pdf->SetRightMargin(15);
+         $this->pdf->SetFont('Arial', 'B', 10);
+         $this->pdf->MultiCell(0,5,''.utf8_decode('7)        Clasificación general de ajustes interpersonal'),0,$J,false);
+         // Respuesta Clasificación general de ajustes interpersonal
+         $this->pdf->SetFont('Arial', '', 10);
+         $this->pdf->MultiCell(0,5,'             '. utf8_decode($entrevista2->clasiGenAjusteInterPerso),0,$J,false);
+         $this->pdf->Ln('5');
+
+         //Continuación de la entrevista
+         //Autoconcepto
+         $this->pdf->SetFont('Arial', 'B', 10);
+         $this->pdf->Cell(28,10,' '. utf8_decode('9.-  AUTOCONCEPTO: '),0,0,'C');
+         $this->pdf->Cell(30);
+         $this->pdf->Ln('10');
+         //Respuesta de autoconcepto
+         $this->pdf->SetFont('Arial', '', 10);
+         $this->pdf->SetLeftMargin(18);
+         $this->pdf->SetRightMargin(15);
+         $this->pdf->MultiCell(0,5,' '. utf8_decode($entrevista2->autoconcepto),0,$J,FALSE);
+         $this->pdf->Ln('5');
+         //Expectativa a futuro
+         $this->pdf->SetFont('Arial', 'B', 10);
+         $this->pdf->Cell(50,10,' '. utf8_decode('10.-  EXPECTATIVAS A FUTURO '),0,0,'C');
+         $this->pdf->Cell(30);
+         $this->pdf->Ln('10');
+         $this->pdf->SetFont('Arial', '', 10);
+         //$this->pdf->SetLeftMargin(20);
+         $this->pdf->SetLeftMargin(18);
+         $this->pdf->SetRightMargin(15);
+         $this->pdf->MultiCell(0,5,' '. utf8_decode($entrevista2->espeFuturo),0,$J,FALSE);
+         $this->pdf->Ln('5');
+         //Impresion diagnostica
+         $this->pdf->SetFont('Arial', 'B', 10);
+         $this->pdf->Cell(39,10,' '. utf8_decode('11.-  IMPRESIÓN DIAGNOSTICA'),0,0,'C');
+         $this->pdf->Cell(30);
+         $this->pdf->Ln('10');
+         //Respuesta imresión diagnostica
+         $this->pdf->SetFont('Arial', '', 10);
+         //$this->pdf->SetLeftMargin(20);
+         $this->pdf->MultiCell(0,5,' '. utf8_decode($entrevista2->ImpDiagnostico),0,$J,FALSE);
+         $this->pdf->Ln('10');
+         //Firma del psicologo
+         $this->pdf->SetFont('Arial', 'B', 10);
+         $this->pdf->Cell(248,10,' '. utf8_decode('PSICÓLOGO: __________________________________________'),0,0,'C');
+         $this->pdf->Cell(30);
+         $this->pdf->Ln('10');
+         //Impresion diagnostica
+         $this->pdf->SetFont('Arial', 'B', 10);
+         $this->pdf->Cell(35,10,' '. utf8_decode('OBSERVACIONES: '),0,0,'C');
+         $this->pdf->Cell(30);
+         $this->pdf->Ln('10');
+         //OBSERVACIONES 
+         $this->pdf->SetFont('Arial', '', 10);
+         //$this->pdf->SetLeftMargin(20);
+         $this->pdf->MultiCell(0,5,' '. utf8_decode($entrevista2->observaciones),0,$J,FALSE);
+         $this->pdf->Cell(30);
+         $this->pdf->Ln('10');
+       }
+       
     //   //$this->pdf->SetFillColor(200,200,200);
     //   $this->pdf->SetLeftMargin(13);
     //   $this->pdf->SetFont('Arial', '', 12);

@@ -2,14 +2,14 @@
 
 	<div class="navegacion1">
 		<!-- <h1><b><span style="color:orange">Bienvendio</b></h1>	 -->
-		<h1><b><span style="color:orange">Panel de control internos</b></h1>
+		<h1><b><span style="color:orange">Internos</b></h1>
 	</div>
 	<div class="row">
 		<form id="nombre" action="<?=base_url()?>AtenConsul" method="POST">
 			  	<div id="navegacion" class="col">
 					<a href="<?=base_url()?>admin">Panel de control </a>
 					<span> | </span>
-					<a class="nav-active">Panel de control internos </a>
+					<a class="nav-active">Internos </a>
 					<!-- <a class="active" href="#!"> </a> -->
 				</div>
 			</form>
@@ -19,12 +19,12 @@
 
 	<div class="wrapper">
 	  <!-- <div class="square1"><a href="<?=base_url()?>PanelInter">Internos</a><h2><h2></div> -->
-	  <div class="square1"><a href="<?=base_url()?>AltaPract">Internos</a><h2><h2></div>
-	  <div class="square2"><a href="<?=base_url()?>AltaIntern">Citas</a></div>
-	  <div class="square3"><h2><h2></div>
-	  <div class="square4"><a  v-on:click="modalIsOpen = true" href="#">Atender Consulta</a><h2><h2></div>
-	  <div class="square5"><a href="<?=base_url()?>Archivo">Archivo Clinico</a><h2><h2></div>
-	  <div class="square6"><a href="<?=base_url()?>AltaIntern">Registro Interno</a><h2><h2></div>
+	  <div class="square7"><a href="<?=base_url()?>AltaPract">Registrar Interno</a><h2><h2></div>
+	  <div class="square8"><a href="<?=base_url()?>AltaIntern">Editar interno</a></div>
+	  <div class="square9"><a >Eliminar interno</a><h2><h2></div>
+	  <div class="square10"><a  v-on:click="modalIsOpen = true" href="#">Internos que tienen la misma conducta antisocial habitual</a><h2><h2></div>
+	  <div class="square11"><a href="<?=base_url()?>Archivo">Internos con mayores consultas psicológicas</a><h2><h2></div>
+	  <div class="square12"><a href="<?=base_url()?>AltaIntern">Internos con problemas interpersonales específicamente</a><h2><h2></div>
 	</div>
 	<!-- modal -->
 	<form slot="modal-header" class="modal-header"  action="<?=base_url()?>AtenConsul" method="post" >
@@ -44,9 +44,9 @@
 			
 		</modal>
 	</form>
-	<pre>
+	<!-- <pre>
 		{{ $data | json }}
-	</pre>
+	</pre> -->
 <?php $this->load->view('admin/adminpie.php');?>
 
 <!-- Scrip del modal <?=base_url()?>AtenConsul -->

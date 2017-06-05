@@ -48,12 +48,12 @@
 		<input name="apellido" type="hidden" value="<?php echo $apellido; ?>"> </input>
 	</form>
 			<div class="wrapper">
-					  <div class="square7"><a href="#" onclick="$('#nombre').submit()">Estudio Inicial de Personalidad</a><h2><h2></div>
-					  <div class="square8"><a href="#" onclick="$('#nombre2').submit()">Entrevista Psicologica</a></div>
-					  <div class="square9"><a href="#" onclick="$('#nombre3').submit()">Estudio Psicológico</a><h2><h2></div>
+					  <div class="square7"><a href="#" onclick="$('#nombre').submit()">Estudio inicial de personalidad</a><h2><h2></div>
+					  <div class="square8"><a href="#" onclick="$('#nombre2').submit()">Entrevista psicológica</a></div>
+					  <div class="square9"><a href="#" onclick="$('#nombre3').submit()">Estudio psicológico</a><h2><h2></div>
 					  <div class="square10"><a href="#" onclick="$('#nombre4').submit()">Estudio para beneficio</a><h2><h2></div>
 					  <div class="square11"><a href="#" onclick="$('#nombre5').submit()">Formato de actividades</a><h2><h2></div>
-					  <div class="square12"><a href="#" onclick="$('#nombre6').submit()">Estudio clinico criminológico</a><h2><h2></div>
+					  <div class="square12"><a href="#" onclick="$('#nombre6').submit()">Estudio clínico criminológico</a><h2><h2></div>
 			</div>	
 	
 <?php $this->load->view('admin/adminpie.php');?>
